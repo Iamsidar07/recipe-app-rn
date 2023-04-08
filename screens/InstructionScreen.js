@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
         marginTop: 10,
         padding: 10,
         fontWeight: "500",
-        fontSize: 21,
     },
     stepItemContainer: {
         padding: 20,

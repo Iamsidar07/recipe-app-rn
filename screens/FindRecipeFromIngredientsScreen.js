@@ -4,6 +4,7 @@ import Constants from "expo-constants"
 import MyText from '../MyText'
 import { headingText, categories } from '../constants'
 import { Ionicons, AntDesign, Entypo } from '@expo/vector-icons';
+import Lottie from 'lottie-react-native';
 
 const baseUrl = "https://recipe-app-api-7eo6.onrender.com/api/v1"
 
@@ -42,8 +43,9 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
         body: JSON.stringify({ ingredients })
       });
       const data = await res.json();
-      // console.log(data.result)
-      navigation.navigate("RecipeDetailScreen", { recipeData: data.result })
+      console.log(data.result)
+      navigation.navigate("RecipeDetailScreen", { recipeData: data.result });
+
     } catch (error) {
       console.log(error);
     } finally {
@@ -72,9 +74,12 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <FlatList data={ingredients} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: "65%" }} />
+      {
+        ingredients.length === 0 ? <Image source={require("../assets/cooking.gif")} style={{ width: "100%", height: 400 }} resizeMode='cover' /> 
+        : 
+        <FlatList data={ingredients} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: "65%" }} />}
 
-      <Pressable style={[styles.startCookBtnContainer, { backgroundColor: isLoading ? "#bdbdbd" :"#0e0e0e"}]} onPress={handleDoneBtnPress}>
+      <Pressable style={[styles.startCookBtnContainer, { backgroundColor: isLoading ? "#dfdfdf" : "#0e0e0e" }]} onPress={handleDoneBtnPress}>
         {
           isLoading ? <ActivityIndicator color="white" size={'large'} /> : (<><MyText text={"Find recipe"} style={styles.startCookBtnText} />
             <Ionicons name="checkmark-done" size={24} color="#e3e3e3" style={styles.startCookBtnText} /></>)
@@ -111,7 +116,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   introTitle: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: "bold",
     marginTop: 24,
   },

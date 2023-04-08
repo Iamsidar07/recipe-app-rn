@@ -1,6 +1,6 @@
 export const headingText = {
     fontWeight: "800",
-    fontSize: 32,
+    fontSize: 28,
 }
 export const subHeadingText = {
     fontWeight: "500",

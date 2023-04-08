@@ -8,7 +8,7 @@ const WelcomeScreen = ({ navigation }) => {
   return (
 
     <SafeAreaView style={styles.container}>
-      <ImageBackground source={require("../assets/welcomeBg.jpg")} style={StyleSheet.absoluteFill} resizeMode='cover' blurRadius={0} />
+      <ImageBackground source={require("../assets/welcomeBg.jpg")} style={StyleSheet.absoluteFill} resizeMode='cover' blurRadius={2} />
       <View style={styles.introContainer}>
         <MyText text={"Cooking  Experience Like a Chef"} style={[headingText, styles.introTitle]} />
         <MyText text={"Let's make a delicious dish with the best recipe for the family."} style={styles.introDescription} />

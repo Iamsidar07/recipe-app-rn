@@ -12,9 +12,10 @@ const RecipeDetailScreen = ({ navigation }) => {
     const { recipeData } = route.params;
     console.log(recipeData,"I am from recipe detail",recipeData.title);
     let difficultyLevelBg;
-    if (recipeData.difficulty === "easy") {
+    const difficultyLevel=recipeData.difficulty.toLowerCase();
+    if (difficultyLevel === "easy") {
         difficultyLevelBg = "green";
-    } else if (recipeData === "medium") {
+    } else if (difficultyLevel === "medium") {
         difficultyLevelBg = "orange"
     } else {
         difficultyLevelBg = "red";
@@ -22,7 +23,7 @@ const RecipeDetailScreen = ({ navigation }) => {
     const renderIngredientItem = ({ item }) => {
         return <View style={styles.ingredientItemContainer}>
             <View style={styles.nameAndImageContainer}>
-                <MyText text={item.ingredientImageUrl} style={styles.ingredientImage} />
+                <Image source={{ uri: item.ingredientImageUrl }} style={styles.ingredientImage} />
                 <MyText text={item.name} style={styles.ingredientName} />
             </View>
             <MyText text={item.quantity} style={styles.ingredientQuantity} />
@@ -36,7 +37,7 @@ const RecipeDetailScreen = ({ navigation }) => {
                 </TouchableOpacity>
                 <MyText text={recipeData.title} style={[headingText, styles.title]} allowFontScaling={true} numberOfLines={1} />
             </View>
-            <Image source={{ uri: recipeData?.image || "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }} style={styles.image} resizeMode='cover' />
+            <Image source={{ uri: recipeData?.recipeImageUrl || "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }} style={styles.image} resizeMode='cover' />
 
             <MyText text={recipeData.description} style={styles.description} />
             <View style={styles.info}>
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
     image: {
         width: "100%",
         height: 200,
-        borderRadius: 30,
+        borderRadius:20,
         marginTop: 20,
     },
     description: {
@@ -104,11 +105,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        marginTop: 10
+        marginTop: 10,
+        paddingHorizontal:10,
+        paddingBottom:15,
     },
     ingredientsText: {
         color: "#111742",
-        fontSize: 24,
     },
     servingBtnContainer: {
         backgroundColor: "#36BD69",
@@ -130,7 +132,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     ingredientName: {
-        fontSize: 20,
         color: "#111742",
         marginLeft: 10,
     },
@@ -138,8 +139,8 @@ const styles = StyleSheet.create({
 
     },
     ingredientImage: {
-        width: 30,
-        height: 30,
+        width: 40,
+        height: 40,
         borderRadius: 50,
     },
     startCookBtnContainer: {

@@ -1,10 +1,11 @@
-import { ActivityIndicator, FlatList, ImageBackground, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, FlatList, Image, ImageBackground, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useLayoutEffect, useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
 import { headingText, categories } from '../constants'
 import { AntDesign } from '@expo/vector-icons';
 import { RecipeCard } from "../components";
+import { BottomTab } from "../components/bottomTab"
 const HomeScreen = ({ navigation }) => {
   const [searchInputText, setSearchInputText] = useState("");
   const [category, setCategory] = useState("");
@@ -21,13 +22,14 @@ const HomeScreen = ({ navigation }) => {
         setIsLoading(true);
         const res = await fetch(`${baseUrl}/recommendation`);
         const data = await res.json();
-        setRecipeDatas(data.result)
+        setRecipeDatas(data.result);
+        const newRecipeDatas=data.result.filter((item)=>item.category.toLowerCase().includes(category.toLocaleLowerCase()));
+        // console.log({newRecipeDatas});
       } catch (error) {
         console.log(error)
       } finally {
         setIsLoading(false);
       }
-
     }
     getAllRecipe();
   }, [])
@@ -50,11 +52,13 @@ const HomeScreen = ({ navigation }) => {
         </View>
         <FlatList data={categories} renderItem={renderCategory} horizontal contentContainerStyle={{ marginTop: 10, }} showsHorizontalScrollIndicator={false} keyExtractor={({ item, index }) => item || Math.random()} />
         {
-          isLoading && recipeDatas === null ? <ActivityIndicator size={'large'} color={"green"} /> : <FlatList data={recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{ marginTop: 10, }} showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item || Math.random()} />
+          isLoading && (recipeDatas === null) ? <View style={styles.loader}>
+            <Image source={require("../assets/recipeLoader.gif")} style={{ width: 100, height: 400,borderRadius:30 }} resizeMode='contain' />
+          </View> : <FlatList data={recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{ marginTop: 10, }} showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item || Math.random()} />
         }
 
       </View>
-
+      <BottomTab navigation={navigation} />
     </SafeAreaView>
 
   )
@@ -68,6 +72,12 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight + 5,
     backgroundColor: "#fbfcfe",
     paddingHorizontal: 15,
+  },
+  loader: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "15%",
+    width: "100%",
   },
   title: {
     color: "#0d0b10",

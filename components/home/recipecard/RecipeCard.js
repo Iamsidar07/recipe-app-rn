@@ -4,19 +4,19 @@ import MyText from "../../../MyText";
 import { Fontisto } from '@expo/vector-icons';
 
 const RecipeCard = ({ recipeData,navigation }) => {
-  const { title, ingredients, time, image } = recipeData;
+  const { title, ingredients, time, recipeImageUrl, category } = recipeData;
 
   const addToFavorite=()=>{
     //add to favorite
   }
   return ( <TouchableOpacity style={styles.container} onPress={()=>navigation.navigate("RecipeDetailScreen",{recipeData})}>
-      <Image source={{ uri: image }} style={styles.image} resizeMode='cover' />
+      <Image source={{ uri: recipeImageUrl }} style={styles.image} resizeMode='cover' />
       <TouchableOpacity style={styles.saveIconContainer} onPress={addToFavorite}>
         <Fontisto name="favorite" size={32} color="white" />
       </TouchableOpacity>
       <View style={styles.recipeInfoContainer}>
         <MyText text={title} style={styles.recipeTitle} />
-        <MyText text={`${ingredients.length} Ingredients | ${time}`} style={styles.ingredientsAndTimeText} />
+      <MyText text={`${category} | ${ingredients.length} Ingredients | ${time}`} style={styles.ingredientsAndTimeText} />
       </View>
     </TouchableOpacity>
   )
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   image:{
     width:"100%",
     height:380,
-    borderRadius:30,
+    borderRadius:20,
     position:"relative",
   },
   saveIconContainer:{
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   recipeInfoContainer:{
     padding:10,
     position:"absolute",
-    bottom:5,
+    bottom:10,
     width:"100%",
   },
   recipeTitle:{
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     fontWeight:"bold",
   },
   ingredientsAndTimeText:{
-    fontSize:18,
+    fontSize:16,
     color:"#e4e1df",
     marginTop:10,
   }

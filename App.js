@@ -3,7 +3,20 @@ import { StyleSheet, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
+
+// function MyTabs() {
+//   return (
+//     <Tab.Navigator>
+//       <Tab.Screen name="Home" component={HomeScreen} />
+//       <Tab.Screen name="Settings" component={SettingsScreen} />
+//     </Tab.Navigator>
+//   );
+// }
 import { HomeScreen, WelcomeScreen, FindRecipeFromIngredientsScreen,RecipeDetailScreen,InstructionScreen, CongratulationScreen } from "./screens"
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
