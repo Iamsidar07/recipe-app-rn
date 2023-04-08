@@ -37,7 +37,7 @@ const RecipeDetailScreen = ({ navigation }) => {
                 </TouchableOpacity>
                 <MyText text={recipeData.title} style={[headingText, styles.title]} allowFontScaling={true} numberOfLines={1} />
             </View>
-            <Image source={{ uri: recipeData?.recipeImageUrl || "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }} style={styles.image} resizeMode='cover' />
+            <Image source={{ uri: recipeData.recipeImageUrl || "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }} style={styles.image} resizeMode='cover' />
 
             <MyText text={recipeData.description} style={styles.description} />
             <View style={styles.info}>
