@@ -1,10 +1,10 @@
-import { ActivityIndicator, FlatList, Image, ImageBackground, Pressable, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useLayoutEffect, useState } from 'react'
+import { ActivityIndicator, Alert, FlatList, Image,Pressable, SafeAreaView, StyleSheet,TextInput, TouchableOpacity, View } from 'react-native'
+import React, {  useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
-import { headingText, categories } from '../constants'
+import { headingText} from '../constants'
 import { Ionicons, AntDesign, Entypo } from '@expo/vector-icons';
-import Lottie from 'lottie-react-native';
+
 
 const baseUrl = "https://recipe-app-api-7eo6.onrender.com/api/v1"
 
@@ -43,20 +43,17 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
         body: JSON.stringify({ ingredients })
       });
       const data = await res.json();
-      console.log(data.result)
+
+      setIngredients([]);
       navigation.navigate("RecipeDetailScreen", { recipeData: data.result });
 
     } catch (error) {
-      console.log(error);
+      Alert.alert(error);
     } finally {
       setIsLoading(false);
-      setIngredients([]);
     }
   }
 
-  console.log(isLoading)
-
-  // console.log(ingredients)
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>

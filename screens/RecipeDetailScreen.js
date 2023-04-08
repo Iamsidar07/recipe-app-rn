@@ -10,7 +10,7 @@ import { useRoute } from '@react-navigation/native'
 const RecipeDetailScreen = ({ navigation }) => {
     const route = useRoute();
     const { recipeData } = route.params;
-    console.log(recipeData,"I am from recipe detail",recipeData.title);
+
     let difficultyLevelBg;
     const difficultyLevel=recipeData.difficulty.toLowerCase();
     if (difficultyLevel === "easy") {

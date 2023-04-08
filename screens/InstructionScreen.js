@@ -1,9 +1,9 @@
-import { ActivityIndicator, FlatList, Image, ImageBackground, Pressable, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useLayoutEffect, useState } from 'react'
+import { FlatList, Image, Pressable, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
-import { headingText, categories } from '../constants'
-import { Ionicons, AntDesign } from '@expo/vector-icons';
+import { headingText } from '../constants'
+import { Ionicons } from '@expo/vector-icons';
 
 import { useRoute } from '@react-navigation/native'
 

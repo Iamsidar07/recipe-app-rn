@@ -1,9 +1,7 @@
-import { ImageBackground, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ImageBackground, SafeAreaView, StyleSheet, } from 'react-native'
 import React from 'react'
 import Constants from "expo-constants"
-import MyText from '../MyText'
-import { headingText } from '../constants'
-import { FontAwesome } from '@expo/vector-icons';
+
 const CongratulationScreen = ({ navigation }) => {
     return (
 

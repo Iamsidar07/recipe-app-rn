@@ -1,6 +1,6 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet,  TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { Entypo, Fontisto,Ionicons } from '@expo/vector-icons';
+import { Entypo, Ionicons } from '@expo/vector-icons';
 
 
 const BottomTab = ({ navigation }) => {

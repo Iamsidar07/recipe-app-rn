@@ -1,4 +1,4 @@
-import { ImageBackground, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ImageBackground, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'

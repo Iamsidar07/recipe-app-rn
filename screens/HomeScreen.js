@@ -1,11 +1,11 @@
-import { ActivityIndicator, FlatList, Image, ImageBackground, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, FlatList, Image,SafeAreaView, StyleSheet,TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useLayoutEffect, useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
 import { headingText, categories } from '../constants'
 import { AntDesign } from '@expo/vector-icons';
-import { RecipeCard } from "../components";
-import { BottomTab } from "../components/bottomTab"
+import { RecipeCard, BottomTab } from "../components";
+
 const HomeScreen = ({ navigation }) => {
   const [searchInputText, setSearchInputText] = useState("");
   const [category, setCategory] = useState("");
@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
         const newRecipeDatas=data.result.filter((item)=>item.category.toLowerCase().includes(category.toLocaleLowerCase()));
         // console.log({newRecipeDatas});
       } catch (error) {
-        console.log(error)
+        Alert.alert(error);
       } finally {
         setIsLoading(false);
       }
