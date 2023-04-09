@@ -35,7 +35,7 @@ const RecipeDetailScreen = ({ navigation }) => {
                 <TouchableOpacity style={styles.backIcon} onPress={() => navigation.goBack()} >
                     <Ionicons name="arrow-back" size={28} color="#bdbdbd" />
                 </TouchableOpacity>
-                <MyText text={recipeData.title} style={[headingText, styles.title]} allowFontScaling={true} numberOfLines={1} />
+                <MyText text={recipeData.title.length>=20?`${recipeData.title.slice(0,20)}...`:recipeData.title} style={[headingText, styles.title]} allowFontScaling={true} numberOfLines={1} />
             </View>
             <Image source={{ uri: recipeData.recipeImageUrl || "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }} style={styles.image} resizeMode='cover' />
 
@@ -69,7 +69,7 @@ export default RecipeDetailScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Constants.statusBarHeight + 5,
+        paddingTop: Constants.statusBarHeight + 15,
     
         paddingHorizontal: 5,
     },
@@ -93,21 +93,22 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     description: {
-        padding: 5,
+        paddingHorizontal: 5,
+        marginTop:4,
     },
     info: {
         flexDirection:"row",
         alignItems:"center",
-        padding:5,
+        paddingHorizontal:5,
+        marginTop:4,
         gap:5,
     },
     ingredientsAndServingBtnContainer: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        marginTop: 10,
-        paddingHorizontal:10,
-        paddingBottom:15,
+        paddingHorizontal:5,
+        paddingBottom:10,
     },
     ingredientsText: {
         color: "#111742",
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#24BC66",
         paddingHorizontal: 25,
         paddingVertical: 15,
-        borderRadius: 20,
+        borderRadius: 40,
     },
     ingredientItemContainer: {
         padding: 20,

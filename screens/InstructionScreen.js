@@ -32,9 +32,9 @@ const InstructionScreen = ({ navigation }) => {
                 <TouchableOpacity style={styles.backIcon} onPress={() => navigation.goBack()} >
                     <Ionicons name="arrow-back" size={28} color="#bdbdbd" />
                 </TouchableOpacity>
-                <MyText text={recipeData.title} style={[headingText, styles.title]} allowFontScaling={true} numberOfLines={1} />
+                <MyText text={recipeData.title.length >= 20 ? `${recipeData.title.slice(0, 20)}...` : recipeData.title} style={[headingText, styles.title]} allowFontScaling={true} numberOfLines={1} />
             </View>
-            <MyText text={"Instructions:"} style={styles.description} />
+            <MyText text={"🍜Instruction:"} style={styles.description} />
             {
                 isDone && <Image source={{ uri:"https://png.pngtree.com/png-clipart/20210808/original/pngtree-congratulations-png-vactor-png-image_6617562.jpg"}} style={styles.congratulationGif} resizeMode='cover' />
             }
@@ -56,7 +56,7 @@ export default InstructionScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Constants.statusBarHeight + 5,
+        paddingTop: Constants.statusBarHeight + 15,
     
         paddingHorizontal: 5,
     },
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         padding: 10,
         fontWeight: "500",
+        fontSize:24,
     },
     stepItemContainer: {
         padding: 15,

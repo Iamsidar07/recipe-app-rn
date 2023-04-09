@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    paddingTop: Constants.statusBarHeight + 5,
+    paddingTop: Constants.statusBarHeight + 15,
     paddingHorizontal: 15,
     // padding:10,
   },
