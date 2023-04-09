@@ -1,4 +1,4 @@
-import { Alert, FlatList, Image,SafeAreaView, StyleSheet,TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, FlatList, Image,Pressable,SafeAreaView, StyleSheet,TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useLayoutEffect, useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
@@ -22,7 +22,7 @@ const HomeScreen = ({ navigation }) => {
         setIsLoading(true);
         const res = await fetch(`${baseUrl}/all`);
         const data = await res.json();
-        setRecipeDatas(data.result);
+        setRecipeDatas(data.result.reverse());
         const newRecipeDatas=data.result.filter((item)=>item.category.toLowerCase().includes(category.toLocaleLowerCase()));
         // console.log({newRecipeDatas});
       } catch (error) {
@@ -36,28 +36,28 @@ const HomeScreen = ({ navigation }) => {
 
   const renderCategory = ({ item }) => {
     return (
-      <TouchableOpacity style={[styles.categoryContainer, { backgroundColor: category === item.name ? "#36BD69" : "white", },]} onPress={() => setCategory(item.name)}>
+      <Pressable style={[styles.categoryContainer, { backgroundColor: category === item.name ? "#36BD69" : "white", },]} onPress={() => setCategory(item.name)}>
         <MyText text={item.name} style={[styles.categoryText, { color: category === item.name ? "white" : "gray" }]} />
-      </TouchableOpacity>
+      </Pressable>
     )
   }
   const renderRecipeCard = ({ item }) => <RecipeCard key={item.id} recipeData={item} navigation={navigation} />
   return (
     <SafeAreaView style={styles.container}>
-      <View>
+        
         <MyText text={"Find Best Recipe For Cooking."} style={[headingText, styles.title]} />
         <View style={styles.searchInputContainer}>
           <AntDesign name="search1" size={24} color="#bdbdbd" />
           <TextInput style={styles.searchInput} placeholder='Search Recipe' onChangeText={(value) => setSearchInputText(value)} placeholderTextColor={"#bdbdbd"} />
         </View>
-        <FlatList data={categories} renderItem={renderCategory} horizontal contentContainerStyle={{ marginTop: 10, }} showsHorizontalScrollIndicator={false} keyExtractor={({ item, index }) => item || Math.random()} />
+        <FlatList data={categories} renderItem={renderCategory} horizontal contentContainerStyle={{height:40,marginTop:10,marginBottom:50,}} showsHorizontalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
         {
           isLoading && (recipeDatas === null) ? <View style={styles.loader}>
             <Image source={require("../assets/recipeLoader.gif")} style={{ width: 100, height: 400,borderRadius:30 }} resizeMode='contain' />
-          </View> : <FlatList data={recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{ marginTop: 10, }} showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item || Math.random()} />
+          </View> : <FlatList data={recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{gap:5,paddingBottom:"35%"}}  showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
         }
 
-      </View>
+
       <BottomTab navigation={navigation} />
     </SafeAreaView>
 
@@ -71,12 +71,12 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: Constants.statusBarHeight + 5,
     backgroundColor: "#fbfcfe",
-    paddingHorizontal: 15,
+    paddingHorizontal: 5,
   },
   loader: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop: "15%",
+    height:"100%",
     width: "100%",
   },
   title: {
@@ -103,7 +103,8 @@ const styles = StyleSheet.create({
     marginRight: 7,
   },
   categoryText: {
-    color: "#bdbdbd"
+    color: "#bdbdbd",
+
   },
 
 

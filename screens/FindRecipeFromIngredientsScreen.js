@@ -43,17 +43,18 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
         body: JSON.stringify({ ingredients })
       });
       const data = await res.json();
-
+      console.log(data)
       setIngredients([]);
       navigation.navigate("RecipeDetailScreen", { recipeData: data.result });
 
     } catch (error) {
-      Alert.alert(error);
+      // Alert.alert(error);
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
   }
-
+  console.log(isLoading);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
