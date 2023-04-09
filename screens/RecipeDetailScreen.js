@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: Constants.statusBarHeight + 5,
-        backgroundColor: "#fbfcfe",
+    
         paddingHorizontal: 5,
     },
     headerContainer: {
@@ -113,14 +113,14 @@ const styles = StyleSheet.create({
         color: "#111742",
     },
     servingBtnContainer: {
-        backgroundColor: "#36BD69",
+        backgroundColor: "#24BC66",
         paddingHorizontal: 25,
         paddingVertical: 15,
         borderRadius: 20,
     },
     ingredientItemContainer: {
         padding: 20,
-        backgroundColor: "#f6f8fc",
+        backgroundColor: "#ffffff",
         marginTop: 10,
         borderRadius: 10,
         flexDirection: "row",

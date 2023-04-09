@@ -16,7 +16,7 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
   const renderIngredientItem = ({ item, index }) => {
     return <View style={styles.ingredientItemContainer}>
       <MyText text={item} style={styles.ingredientName} />
-      <TouchableOpacity style={[styles.plusContainer, { backgroundColor: "#0e0e0e" }]} onPress={() => removeIngredient(index)}>
+      <TouchableOpacity style={[styles.plusContainer, { backgroundColor: "#2d2d2d" }]} onPress={() => removeIngredient(index)}>
         <Entypo name="cross" size={24} color="white" />
       </TouchableOpacity>
 
@@ -30,7 +30,7 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
     setIngredients((prevIngedients) => prevIngedients.filter((item) => item !== prevIngedients[id]))
   }
   const handleDoneBtnPress = async () => {
-    if (isLoading) {
+    if (isLoading || (ingredients.length===0)) {
       return;
     }
     try {
@@ -73,11 +73,13 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
       </View>
 
       {
-        ingredients.length === 0 ? <Image source={require("../assets/cooking.gif")} style={{ width: "100%", height: 400 }} resizeMode='cover' /> 
+        ingredients.length === 0 ? <View>
+          <Image source={require("../assets/boy.png")} style={{ width: "100%", height: 400 }} resizeMode='cover' /> 
+        </View>
         : 
         <FlatList data={ingredients} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: "65%" }} />}
 
-      <Pressable style={[styles.startCookBtnContainer, { backgroundColor: isLoading ? "#dfdfdf" : "#0e0e0e" }]} onPress={handleDoneBtnPress}>
+      <Pressable style={[styles.startCookBtnContainer, { backgroundColor: isLoading ? "#cbc39c" : "#0e0e0e" }]} onPress={handleDoneBtnPress}>
         {
           isLoading ? <ActivityIndicator color="white" size={'large'} /> : (<><MyText text={"Find recipe"} style={styles.startCookBtnText} />
             <Ionicons name="checkmark-done" size={24} color="#e3e3e3" style={styles.startCookBtnText} /></>)
@@ -96,8 +98,8 @@ export default FindRecipeFromIngredientsScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight + 5,
-    backgroundColor: "#fbfcfe",
+    paddingTop: Constants.statusBarHeight + 15,
+
     paddingHorizontal: 10,
   },
   headerContainer: {
@@ -144,8 +146,7 @@ const styles = StyleSheet.create({
   },
   ingredientItemContainer: {
     padding: 10,
-    paddingHorizontal: 20,
-    backgroundColor: "#f6f8fc",
+    backgroundColor: "#ffffff",
     marginTop: 10,
     borderRadius: 10,
     flexDirection: "row",

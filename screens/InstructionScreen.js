@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: Constants.statusBarHeight + 5,
-        backgroundColor: "#fbfcfe",
+    
         paddingHorizontal: 5,
     },
     headerContainer: {
@@ -79,8 +79,8 @@ const styles = StyleSheet.create({
         fontWeight: "500",
     },
     stepItemContainer: {
-        padding: 20,
-        backgroundColor: "#f6f8fc",
+        padding: 15,
+        backgroundColor: "#ffffff",
         marginTop: 10,
         borderRadius: 10,
     },
@@ -88,12 +88,12 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         borderRadius: 40,
-        backgroundColor: "#36BD69",
+        backgroundColor: "#24BC66",
         alignItems: "center",
         justifyContent: "center",
         position: "absolute",
-        left: 3,
-        top: 3,
+        left: 5,
+        top: 5,
     },
     stepNumber: {
         color: "white",
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         marginTop: 50,
     },
     startCookBtnContainer: {
-        backgroundColor: "#36BD69",
+        backgroundColor: "#0e0e0e",
         padding: 20,
         borderRadius: 40,
         flexDirection: "row",

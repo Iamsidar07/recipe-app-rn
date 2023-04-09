@@ -1,4 +1,4 @@
-import { ImageBackground, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Image, ImageBackground, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
@@ -8,9 +8,11 @@ const WelcomeScreen = ({ navigation }) => {
   return (
 
     <SafeAreaView style={styles.container}>
-      <ImageBackground source={require("../assets/welcomeBg.jpg")} style={StyleSheet.absoluteFill} resizeMode='cover' blurRadius={2} />
+      <ImageBackground source={require("../assets/welcomeBg.jpg")} style={StyleSheet.absoluteFill} resizeMode='cover' blurRadius={10} />
+      <Image source={require("../assets/girl.png")} style={{ width: "100%", height: 400 }} resizeMode='cover' /> 
       <View style={styles.introContainer}>
-        <MyText text={"Cooking  Experience Like a Chef"} style={[headingText, styles.introTitle]} />
+        <MyText text={"Cooking  Experience"} style={[headingText, styles.introTitle]} />
+        <MyText text={"Like a Chef."} style={[headingText, styles.introTitle]} />
         <MyText text={"Let's make a delicious dish with the best recipe for the family."} style={styles.introDescription} />
         <TouchableOpacity style={styles.getStartedBtnContainer} onPress={()=>navigation.navigate("HomeScreen")}>
           <View style={styles.getStartedBtnIconContainer}>
@@ -30,7 +32,7 @@ export default WelcomeScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight + 5,
+    paddingTop: Constants.statusBarHeight + 10,
     alignItems: "center",
     justifyContent: "flex-end",
   },
@@ -41,6 +43,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight:"bold",
     color:"white",
+    fontSize:34,
   },
   introDescription: {
     textAlign: "center",
@@ -50,7 +53,7 @@ const styles = StyleSheet.create({
   },
   getStartedBtnContainer: {
     flexDirection: "row",
-    backgroundColor: "#36BD69",
+    backgroundColor: "#24BC66",
     paddingHorizontal: 10,
     paddingVertical: 10,
     borderRadius: 200,
