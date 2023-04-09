@@ -20,7 +20,7 @@ const HomeScreen = ({ navigation }) => {
     const getAllRecipe = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch(`${baseUrl}/recommendation`);
+        const res = await fetch(`${baseUrl}/all`);
         const data = await res.json();
         setRecipeDatas(data.result);
         const newRecipeDatas=data.result.filter((item)=>item.category.toLowerCase().includes(category.toLocaleLowerCase()));
