@@ -9,14 +9,14 @@ const BottomTab = ({ navigation }) => {
     <View style={styles.container}>
       <TouchableOpacity style={styles.iconContainer} onPress={()=>navigation.navigate("HomeScreen")}>
         <Entypo name="home" size={24} color="black" />
-        <MyText text={"Home"} style={{ fontSize: 14, color: "#a6a6a6" }} />
+        <MyText text={"Home"} style={{ fontSize: 16, color: "#a6a6a6" }} />
       </TouchableOpacity>
       {/* <TouchableOpacity style={styles.iconContainer} onPress={()=>navigation.navigate("HomeScreen")}>
         <Fontisto name="favorite" size={24} color="#dfdfdf" />
       </TouchableOpacity> */}
       <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate("FindRecipeFromIngredientsScreen")}>
         <Ionicons name="ios-fast-food" size={24} color="#dfdfdf" />
-        <MyText text={"Don't know"} style={{ fontSize: 14, color: "#a6a6a6" }} />
+        <MyText text={"Don't know"} style={{ fontSize: 16, color: "#a6a6a6" }} />
       </TouchableOpacity>
     </View>
   )

@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     },
     backIcon: {
         position: "absolute",
-        left: 0,
+        left: 5,
         backgroundColor: "white",
         width: 50,
         height: 50,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     description: {
-        // fontWeight: "500",
+        fontFamily: "Karla-Regular",
         fontSize: 20,
         marginTop:30,
         padding:10,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     },
     stepNumber: {
         color: "white",
-        fontWeight: "bold"
+        fontFamily: "Karla-Bold",
     },
     instructionText: {
         marginTop: 50,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     },
     startCookBtnText: {
         marginRight: 10,
-        fontWeight: "bold",
+        fontFamily: "Karla-Bold",
         fontSize: 20,
         color: "white",
         textAlign: "center",

@@ -5,8 +5,7 @@ import MyText from '../MyText'
 import { headingText, categories } from '../constants'
 import { AntDesign } from '@expo/vector-icons';
 import { RecipeCard, BottomTab } from "../components";
-import LottieView from "lottie-react-native";
-import loaderResource from "../assets/loader.json";
+
 
 const HomeScreen = ({ navigation }) => {
   const [searchInputText, setSearchInputText] = useState("all");
@@ -68,13 +67,7 @@ const HomeScreen = ({ navigation }) => {
         {
           (isLoading && (recipeDatas === null)) ?
             <View style={styles.loader}>
-              <View style={{ width: 200, height: 200 }}>
-                <LottieView
-                  source={loaderResource}
-                  autoPlay
-                  loop={true}
-                />
-              </View>
+                <Image source={require("../assets/1.gif")} style={{ width: 70, height: 70 }} resizeMode='contain'/>
             </View>
             : <FlatList data={recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{ gap: 5, paddingBottom: "35%", }} showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
         }
@@ -107,7 +100,7 @@ const styles = StyleSheet.create({
   },
   homeHeaderNormalText: {
     fontSize: 20,
-    fontWeight: '600'
+    fontFamily: "Karla-Bold",
   },
   userAvatar: {
     borderRadius: 50,
@@ -118,6 +111,7 @@ const styles = StyleSheet.create({
   loader: {
     alignItems: "center",
     justifyContent: "center",
+    marginTop:10,
   },
 
   title: {
@@ -138,7 +132,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     backgroundColor: "#ffffff",
     color: "#bdbdbd",
-    fontFamily: "GoogleSans-Regular"
+    fontFamily: "Karla-Regular"
   },
   categoryContainer: {
     paddingHorizontal: 15,

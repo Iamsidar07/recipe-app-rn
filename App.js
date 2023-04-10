@@ -30,9 +30,12 @@ export default function App() {
   };
 
   const [loaded] = useFonts({
-    "GoogleSans-Bold": require("./assets/fonts/GoogleSans-Bold.ttf"),
-    "GoogleSans-Medium": require("./assets/fonts/GoogleSans-Medium.ttf"),
-    "GoogleSans-Regular": require("./assets/fonts/GoogleSans-Regular.ttf"),
+    "Karla-Bold": require("./assets/fonts/Karla-Bold.ttf"),
+    "Karla-Medium": require("./assets/fonts/Karla-Medium.ttf"),
+    "Karla-Regular": require("./assets/fonts/Karla-Regular.ttf"),
+    "Karla-Light": require("./assets/fonts/Karla-Light.ttf"),
+    "Karla-ExtraBold": require("./assets/fonts/Karla-ExtraBold.ttf"),
+    "Karla-SemiBold": require("./assets/fonts/Karla-SemiBold.ttf"),
   });
 
   if (!loaded) return null;

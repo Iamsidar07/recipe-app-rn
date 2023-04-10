@@ -46,19 +46,19 @@ const RecipeDetailScreen = ({ navigation }) => {
                 <MyText text={recipeData.title} style={styles.title} />
                
                 <View style={styles.info}>
-                    <MyText text={recipeData.category} style={{ fontSize: 14 }} />
+                    <MyText text={recipeData.category} style={{ fontSize: 16 }} />
                     <View style={styles.infoContainer}>
                         <AntDesign name="barschart" size={24} color="#a6a6a6" />
-                        <MyText text={recipeData.difficulty} style={{ fontSize: 14 }} />
+                        <MyText text={recipeData.difficulty} style={{ fontSize: 16 }} />
                     </View>
                     <View style={styles.infoContainer}>
                         <MaterialIcons name="access-time" size={24} color="#a6a6a6" />
-                        <MyText text={recipeData.time} style={{ fontSize: 14 }} />
+                        <MyText text={recipeData.time} style={{ fontSize: 16 }} />
                     </View>
-                    <MyText text={`Serving ${recipeData.serving}`} style={{ fontSize:14 }} />
+                    <MyText text={`${recipeData.serving} Serving `} style={{ fontSize: 16 }} />
 
                 </View>
-                <MyText text={"Description"} style={{fontSize:20,marginBottom:10,}}/>
+                <MyText text={"Description"} style={{ fontSize: 20, marginBottom: 10, fontFamily: "Karla-Bold", }}/>
                 <MyText text={recipeData.description} style={styles.description} />
 
                 <View style={styles.ingredientsAndServingBtnContainer}>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     title: {
         color: "#0d0b10",
         fontSize: 20,
-        fontWeight: "600",
+        fontFamily: "Karla-Bold",
     },
     image: {
         width: "100%",
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     info: {
         flexDirection: "row",
         alignItems: "center",
-        marginTop: 4,
+        marginTop: 7,
         gap: 5,
         marginBottom:30,
     },
@@ -131,13 +131,13 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        paddingHorizontal: 5,
         paddingBottom: 10,
         marginVertical:10,
     },
     ingredientsText: {
         color: "#111742",
         fontSize:20,
+        fontFamily: "Karla-Bold",
     },
     servingBtnContainer: {
         // backgroundColor: "#24BC66",
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     },
     startCookBtnText: {
         marginRight: 10,
-        fontWeight: "bold",
+        fontFamily: "Karla-Bold",
         fontSize: 20,
         color: "white",
         textAlign: "center",

@@ -28,10 +28,11 @@ const styles = StyleSheet.create({
 
   image: {
     width: "100%",
-    height: 280,
+    height: 400,
     borderRadius: 30,
     position: "relative",
-    backgroundColor:"#614b3d"
+    backgroundColor:"#614b3d",
+
   },
   saveIconContainer: {
     width: 60,
@@ -45,18 +46,18 @@ const styles = StyleSheet.create({
     right: 10
   },
   recipeInfoContainer: {
-    padding: 10,
+    padding: 15,
     position: "absolute",
-    bottom: 10,
+    bottom: 15,
     width: "100%",
+    left:10,
   },
   recipeTitle: {
     fontSize: 20,
     color: "white",
-    fontWeight: "bold",
+    fontFamily:"Karla-Bold",
   },
   ingredientsAndTimeText: {
-    fontSize:14,
     color: "#e4e1df",
     marginTop: 10,
   }
