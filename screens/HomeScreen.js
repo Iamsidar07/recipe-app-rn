@@ -6,7 +6,7 @@ import { headingText, categories } from '../constants'
 import { AntDesign } from '@expo/vector-icons';
 import { RecipeCard, BottomTab } from "../components";
 import LottieView from "lottie-react-native";
-
+import loaderResource from "../assets/loader.json";
 
 const HomeScreen = ({ navigation }) => {
   const [searchInputText, setSearchInputText] = useState("all");
@@ -68,11 +68,11 @@ const HomeScreen = ({ navigation }) => {
         {
           (isLoading && (recipeDatas === null)) ?
             <View style={styles.loader}>
-              <View style={{ width: 200, height: 200, }}>
+              <View style={{ width: 200, height: 200 }}>
                 <LottieView
-                  source={require("../assets/loader.json")}
-                  loop={true}
+                  source={loaderResource}
                   autoPlay
+                  loop={true}
                 />
               </View>
             </View>
@@ -118,7 +118,6 @@ const styles = StyleSheet.create({
   loader: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor:"red",
   },
 
   title: {
