@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
   },
   introContainer: {
   //  marginBottom:"25%",
+  marginBottom:20,
   },
   introTitle: {
     textAlign: "center",

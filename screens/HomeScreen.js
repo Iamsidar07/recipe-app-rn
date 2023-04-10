@@ -66,14 +66,13 @@ const HomeScreen = ({ navigation }) => {
         <FlatList data={categories} renderItem={renderCategory} horizontal contentContainerStyle={{marginVertical:20,}} showsHorizontalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
         
         {
-          !(isLoading && (recipeDatas === null)) ?
+          (isLoading && (recipeDatas === null)) ?
             <View style={styles.loader}>
               <View style={{ width: 200, height: 200, }}>
                 <LottieView
                   source={require("../assets/loader.json")}
-                  loop
+                  loop={true}
                   autoPlay
-                  style={{width:"100%",height:"100%"}}
                 />
               </View>
             </View>
@@ -119,6 +118,7 @@ const styles = StyleSheet.create({
   loader: {
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor:"red",
   },
 
   title: {
