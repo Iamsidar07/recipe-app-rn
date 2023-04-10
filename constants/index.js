@@ -3,7 +3,6 @@ export const headingText = {
     fontSize: 28,
 }
 export const subHeadingText = {
-    fontFamily: "Poppins-SemiBold",
     fontSize: 20,
 }
 export const categories = [
