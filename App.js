@@ -40,7 +40,7 @@ export default function App() {
   if (!loaded) return null;
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
+      <StatusBar style="auto" backgroundColor='#FFF3E2' animated/>
       <NavigationContainer theme={FavouriteTheme}  >
         <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='WelcomeScreen'  >
           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ title: "WelcomeScreen" }} />
