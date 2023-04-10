@@ -23,7 +23,7 @@ const RecipeDetailScreen = ({ navigation }) => {
     const renderIngredientItem = ({ item }) => {
         return <View style={styles.ingredientItemContainer}>
             <View style={styles.nameAndImageContainer}>
-                <Image source={{ uri: item.ingredientImageUrl }} style={styles.ingredientImage} />
+                <MyText text={item.ingredientEmoji} style={styles.ingredientImage} />
                 <MyText text={item.name} style={styles.ingredientName} />
             </View>
             <MyText text={item.quantity} style={styles.ingredientQuantity} />
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
         height: 200,
         borderRadius:20,
         marginTop: 20,
+        backgroundColor: "#614b3d"
     },
     description: {
         paddingHorizontal: 5,
@@ -140,9 +141,7 @@ const styles = StyleSheet.create({
 
     },
     ingredientImage: {
-        width: 40,
-        height: 40,
-        borderRadius: 50,
+        fontSize:24,
     },
     startCookBtnContainer: {
         backgroundColor: "#0e0e0e",

@@ -13,20 +13,21 @@ const HomeScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   // console.log(searchInputText);
 
-  const baseUrl = "https://recipe-app-api-7eo6.onrender.com/api/v1"
+  const url = "https://recipe-app-api-7eo6.onrender.com/api/v1/all"
 
-
+  
   useLayoutEffect(() => {
     const getAllRecipe = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch(`${baseUrl}/all`);
+        const res = await fetch(`${url}`);
         const data = await res.json();
-        setRecipeDatas(data.result.reverse());
+        setRecipeDatas(data.result);
+        console.log(data.result.reverse())
         const newRecipeDatas = data.result.filter((item) => item.category.toLowerCase().includes(category.toLocaleLowerCase()));
         // console.log({newRecipeDatas});
       } catch (error) {
-        Alert.alert(error);
+        Alert.alert(error.message);
       } finally {
         setIsLoading(false);
       }

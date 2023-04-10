@@ -6,7 +6,7 @@ import { headingText} from '../constants'
 import { Ionicons, AntDesign, Entypo } from '@expo/vector-icons';
 
 
-const baseUrl = "https://recipe-app-api-7eo6.onrender.com/api/v1"
+const url = "https://recipe-app-api-7eo6.onrender.com/api/v1/findRecipe"
 
 const FindRecipeFromIngredientsScreen = ({ navigation }) => {
   const [ingredients, setIngredients] = useState([]);
@@ -35,7 +35,7 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
     }
     try {
       setIsLoading(true);
-      const res = await fetch(`${baseUrl}/findRecipe`, {
+      const res = await fetch(`${url}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

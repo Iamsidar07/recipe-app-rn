@@ -28,9 +28,10 @@ const styles = StyleSheet.create({
 
   image: {
     width: "100%",
-    height: 370,
+    height: 350,
     borderRadius: 20,
     position: "relative",
+    backgroundColor:"#614b3d"
   },
   saveIconContainer: {
     width: 60,
