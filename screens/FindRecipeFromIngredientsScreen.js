@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   introTitle: {
-    fontSize: 20,
+    fontSize: 25,
     fontFamily:"Raleway-Medium",
     marginTop: 24,
   },
