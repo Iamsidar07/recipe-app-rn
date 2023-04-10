@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   introTitle: {
     textAlign: "center",
-    fontFamily: "Karla-Bold",
+    fontFamily: "Poppins-Bold",
     color:"white",
     fontSize:28,
   },
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     color: "white",
     marginLeft: 15,
     marginRight: "15%",
-    fontFamily: "Karla-Bold",
+    fontFamily: "Poppins-Bold",
 
   }
 

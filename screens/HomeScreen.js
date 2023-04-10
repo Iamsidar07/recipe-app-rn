@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   },
   homeHeaderNormalText: {
     fontSize: 20,
-    fontFamily: "Karla-Bold",
+    fontFamily: "Poppins-Bold",
   },
   userAvatar: {
     borderRadius: 50,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     backgroundColor: "#ffffff",
     color: "#bdbdbd",
-    fontFamily: "Karla-Regular"
+    fontFamily: "Poppins-Regular"
   },
   categoryContainer: {
     paddingHorizontal: 15,

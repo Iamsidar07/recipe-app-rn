@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   introTitle: {
     fontSize: 20,
-    fontFamily:"Karla-Bold",
+    fontFamily:"Poppins-Bold",
     marginTop: 24,
   },
   introDesc: {
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontFamily: "Karla-Regular"
+    fontFamily: "Poppins-Regular"
   },
   plusContainer: {
     width: 40,
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   },
   startCookBtnText: {
     marginRight: 10,
-    fontFamily: "Karla-Bold",
+    fontFamily: "Poppins-Bold",
     fontSize: 20,
     color: "white",
     textAlign: "center",

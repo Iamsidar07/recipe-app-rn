@@ -30,12 +30,12 @@ export default function App() {
   };
 
   const [loaded] = useFonts({
-    "Karla-Bold": require("./assets/fonts/Karla-Bold.ttf"),
-    "Karla-Medium": require("./assets/fonts/Karla-Medium.ttf"),
-    "Karla-Regular": require("./assets/fonts/Karla-Regular.ttf"),
-    "Karla-Light": require("./assets/fonts/Karla-Light.ttf"),
-    "Karla-ExtraBold": require("./assets/fonts/Karla-ExtraBold.ttf"),
-    "Karla-SemiBold": require("./assets/fonts/Karla-SemiBold.ttf"),
+    "Poppins-Bold": require("./assets/fonts/Poppins-Bold.ttf"),
+    "Poppins-Medium": require("./assets/fonts/Poppins-Medium.ttf"),
+    "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
+    "Poppins-Light": require("./assets/fonts/Poppins-Light.ttf"),
+    "Poppins-ExtraBold": require("./assets/fonts/Poppins-ExtraBold.ttf"),
+    "Poppins-SemiBold": require("./assets/fonts/Poppins-SemiBold.ttf"),
   });
 
   if (!loaded) return null;

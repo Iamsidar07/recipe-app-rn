@@ -1,9 +1,9 @@
 export const headingText = {
-    fontFamily: "Karla-Bold",
+    fontFamily: "Poppins-Bold",
     fontSize: 28,
 }
 export const subHeadingText = {
-    fontFamily: "Karla-SemiBold",
+    fontFamily: "Poppins-SemiBold",
     fontSize: 20,
 }
 export const categories = [
