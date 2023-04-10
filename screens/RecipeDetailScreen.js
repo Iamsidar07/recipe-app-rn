@@ -42,7 +42,7 @@ const RecipeDetailScreen = ({ navigation }) => {
                     <MaterialIcons name="favorite-border" size={24} color="black" />
                 </TouchableOpacity>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ backgroundColor: "#ffffff", paddingHorizontal: 20, paddingVertical: 50, borderTopLeftRadius: 30, borderTopRightRadius: 30,maxHeight:"70%"}}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ backgroundColor: "#ffffff", paddingHorizontal: 20, paddingVertical: 50, borderTopLeftRadius: 30, borderTopRightRadius: 30,}}>
                 <MyText text={recipeData.title} style={styles.title} />
                
                 <View style={styles.info}>
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         paddingTop:5,
         paddingHorizontal: 15,
-        marginBottom: "50%"
+        marginBottom: "40%"
     },
     backIcon: {
         backgroundColor: "white",

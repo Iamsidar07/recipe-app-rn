@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     marginBottom:5,
   },
   homeHeaderNormalText: {
-    fontSize: 26,
+    fontSize: 23,
     fontFamily: "Raleway-Medium",
   },
   userAvatar: {
