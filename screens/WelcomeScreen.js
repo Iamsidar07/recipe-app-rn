@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   introContainer: {
-   marginBottom:"25%",
+  //  marginBottom:"25%",
   },
   introTitle: {
     textAlign: "center",

@@ -5,6 +5,8 @@ import MyText from '../MyText'
 import { headingText, categories } from '../constants'
 import { AntDesign } from '@expo/vector-icons';
 import { RecipeCard, BottomTab } from "../components";
+import LottieView from "lottie-react-native";
+
 
 const HomeScreen = ({ navigation }) => {
   const [searchInputText, setSearchInputText] = useState("all");
@@ -66,7 +68,14 @@ const HomeScreen = ({ navigation }) => {
         {
           !(isLoading && (recipeDatas === null)) ?
             <View style={styles.loader}>
-              <Image source={require("../assets/recipeLoader.gif")} style={{ width: 200, height: 200, }} resizeMode='cover' />
+              <View style={{ width: 200, height: 200, }}>
+                <LottieView
+                  source={require("../assets/loader.json")}
+                  loop
+                  autoPlay
+                  style={{width:"100%",height:"100%"}}
+                />
+              </View>
             </View>
             : <FlatList data={recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{ gap: 5, paddingBottom: "35%", }} showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
         }
