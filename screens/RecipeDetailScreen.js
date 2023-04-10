@@ -33,7 +33,7 @@ const RecipeDetailScreen = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={styles.container}>
-            <Image source={{ uri: recipeData.recipeImageUrl }} style={StyleSheet.absoluteFill} resizeMode='cover' />
+            <Image source={{ uri: recipeData.recipeImageUrl }} style={StyleSheet.absoluteFillObject} resizeMode='cover' />
             <View style={styles.headerContainer}>
                 <TouchableOpacity style={styles.backIcon} onPress={() => navigation.goBack()} >
                     <Ionicons name="arrow-back" size={24} color="black" />
