@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   introTitle: {
     fontSize: 20,
-    fontFamily:"Manrope-SemiBold",
+    fontFamily:"Karla-SemiBold",
     marginTop: 24,
   },
   introDesc: {
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontFamily: "Manrope-Regular"
+    fontFamily: "Karla-Regular"
   },
   plusContainer: {
     width: 40,
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   },
   startCookBtnText: {
     marginRight: 10,
-    fontFamily: "Manrope-SemiBold",
+    fontFamily: "Karla-SemiBold",
     fontSize: 20,
     color: "white",
     textAlign: "center",

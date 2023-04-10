@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   introTitle: {
     textAlign: "center",
-    fontFamily: "Manrope-SemiBold",
+    fontFamily: "Karla-SemiBold",
     color:"white",
     fontSize:28,
   },
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     color: "white",
     marginLeft: 15,
     marginRight: "15%",
-    fontFamily: "Manrope-SemiBold",
+    fontFamily: "Karla-SemiBold",
 
   }
 

@@ -30,17 +30,17 @@ export default function App() {
   };
 
   const [loaded] = useFonts({
-    "Manrope-SemiBold": require("./assets/fonts/Manrope-SemiBold.ttf"),
-    "Manrope-Medium": require("./assets/fonts/Manrope-Medium.ttf"),
-    "Manrope-Regular": require("./assets/fonts/Manrope-Regular.ttf"),
-    "Manrope-SemiBold": require("./assets/fonts/Manrope-SemiBold.ttf"),
+    "Karla-SemiBold": require("./assets/fonts/Karla-SemiBold.ttf"),
+    "Karla-Medium": require("./assets/fonts/Karla-Medium.ttf"),
+    "Karla-Regular": require("./assets/fonts/Karla-Regular.ttf"),
+    "Karla-SemiBold": require("./assets/fonts/Karla-SemiBold.ttf"),
     
   });
 
   if (!loaded) return null;
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" backgroundColor='#FFF3E2' animated/>
+      <StatusBar style="auto"  animated/>
       <NavigationContainer theme={FavouriteTheme}  >
         <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='WelcomeScreen'  >
           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ title: "WelcomeScreen" }} />

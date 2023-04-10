@@ -58,7 +58,7 @@ const RecipeDetailScreen = ({ navigation }) => {
                     <MyText text={`${recipeData.serving} Serving `} style={{ fontSize: 16 }} />
 
                 </View>
-                <MyText text={"Description"} style={{ fontSize: 20, marginBottom: 10, fontFamily: "Manrope-SemiBold", }}/>
+                <MyText text={"Description"} style={{ fontSize: 20, marginBottom: 10, fontFamily: "Karla-SemiBold", }}/>
                 <MyText text={recipeData.description} style={styles.description} />
 
                 <View style={styles.ingredientsAndServingBtnContainer}>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     title: {
         color: "#0d0b10",
         fontSize: 20,
-        fontFamily: "Manrope-SemiBold",
+        fontFamily: "Karla-SemiBold",
     },
     image: {
         width: "100%",
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     ingredientsText: {
         color: "#111742",
         fontSize:20,
-        fontFamily: "Manrope-SemiBold",
+        fontFamily: "Karla-SemiBold",
     },
     servingBtnContainer: {
         // backgroundColor: "#24BC66",
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     },
     startCookBtnText: {
         marginRight: 10,
-        fontFamily: "Manrope-SemiBold",
+        fontFamily: "Karla-SemiBold",
         fontSize: 20,
         color: "white",
         textAlign: "center",
