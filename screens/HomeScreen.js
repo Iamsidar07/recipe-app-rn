@@ -66,7 +66,7 @@ const HomeScreen = ({ navigation }) => {
         {
           !(isLoading && (recipeDatas === null)) ?
             <View style={styles.loader}>
-              <Image source={require("../assets/cutlery.gif")} style={{ width: 200, height: 200, }} resizeMode='cover' />
+              <Image source={require("../assets/recipeLoader.gif")} style={{ width: 200, height: 200, }} resizeMode='cover' />
             </View>
             : <FlatList data={recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{ gap: 5, paddingBottom: "35%", }} showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
         }
