@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     description: {
-        fontFamily: "Poppins-Regular",
+        fontFamily: "Manrope-Regular",
         fontSize: 20,
         marginTop:30,
         padding:10,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     },
     stepNumber: {
         color: "white",
-        fontFamily: "Poppins-Bold",
+        fontFamily: "Manrope-SemiBold",
     },
     instructionText: {
         marginTop: 50,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     },
     startCookBtnText: {
         marginRight: 10,
-        fontFamily: "Poppins-Bold",
+        fontFamily: "Manrope-SemiBold",
         fontSize: 20,
         color: "white",
         textAlign: "center",
