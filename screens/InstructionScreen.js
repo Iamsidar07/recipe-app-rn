@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     description: {
-        fontFamily: "Karla-Regular",
+        fontFamily: "Raleway-Regular",
         fontSize: 20,
         marginTop:30,
         padding:10,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     },
     stepNumber: {
         color: "white",
-        fontFamily: "Karla-SemiBold",
+        fontFamily: "Raleway-Medium",
     },
     instructionText: {
         marginTop: 50,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     },
     startCookBtnText: {
         marginRight: 10,
-        fontFamily: "Karla-SemiBold",
+        fontFamily: "Raleway-Medium",
         fontSize: 20,
         color: "white",
         textAlign: "center",

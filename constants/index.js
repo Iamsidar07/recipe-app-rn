@@ -1,5 +1,5 @@
 export const headingText = {
-    fontFamily: "Karla-SemiBold",
+    fontFamily: "Raleway-Medium",
     fontSize: 28,
 }
 export const subHeadingText = {

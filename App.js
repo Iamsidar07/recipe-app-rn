@@ -30,10 +30,11 @@ export default function App() {
   };
 
   const [loaded] = useFonts({
-    "Karla-SemiBold": require("./assets/fonts/Karla-SemiBold.ttf"),
-    "Karla-Medium": require("./assets/fonts/Karla-Medium.ttf"),
-    "Karla-Regular": require("./assets/fonts/Karla-Regular.ttf"),
-    "Karla-SemiBold": require("./assets/fonts/Karla-SemiBold.ttf"),
+    "Raleway-SemiBold": require("./assets/fonts/Raleway-SemiBold.ttf"),
+    "Raleway-Medium": require("./assets/fonts/Raleway-Medium.ttf"),
+    "Raleway-Regular": require("./assets/fonts/Raleway-Regular.ttf"),
+    "Raleway-SemiBold": require("./assets/fonts/Raleway-SemiBold.ttf"),
+    "Raleway-Light": require("./assets/fonts/Raleway-Light.ttf"),
     
   });
 

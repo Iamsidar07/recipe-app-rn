@@ -48,17 +48,17 @@ const RecipeDetailScreen = ({ navigation }) => {
                 <View style={styles.info}>
                     <MyText text={recipeData.category} style={{ fontSize: 16 }} />
                     <View style={styles.infoContainer}>
-                        <AntDesign name="barschart" size={24} color="#a6a6a6" />
+                        <AntDesign name="barschart" size={20} color="#a6a6a6" />
                         <MyText text={recipeData.difficulty} style={{ fontSize: 16 }} />
                     </View>
                     <View style={styles.infoContainer}>
-                        <MaterialIcons name="access-time" size={24} color="#a6a6a6" />
+                        <MaterialIcons name="access-time" size={20} color="#a6a6a6" />
                         <MyText text={recipeData.time} style={{ fontSize: 16 }} />
                     </View>
                     <MyText text={`${recipeData.serving} Serving `} style={{ fontSize: 16 }} />
 
                 </View>
-                <MyText text={"Description"} style={{ fontSize: 20, marginBottom: 10, fontFamily: "Karla-SemiBold", }}/>
+                <MyText text={"Description"} style={{ fontSize: 20, marginBottom: 10, fontFamily: "Raleway-Medium", }}/>
                 <MyText text={recipeData.description} style={styles.description} />
 
                 <View style={styles.ingredientsAndServingBtnContainer}>
@@ -101,8 +101,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: "#0d0b10",
-        fontSize: 20,
-        fontFamily: "Karla-SemiBold",
+        fontSize: 25,
+        fontFamily: "Raleway-Medium",
     },
     image: {
         width: "100%",
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     ingredientsText: {
         color: "#111742",
         fontSize:20,
-        fontFamily: "Karla-SemiBold",
+        fontFamily: "Raleway-Medium",
     },
     servingBtnContainer: {
         // backgroundColor: "#24BC66",
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     },
     startCookBtnText: {
         marginRight: 10,
-        fontFamily: "Karla-SemiBold",
+        fontFamily: "Raleway-Medium",
         fontSize: 20,
         color: "white",
         textAlign: "center",
