@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight:"bold",
     color:"white",
-    fontSize:34,
+    fontSize:28,
   },
   introDescription: {
     textAlign: "center",

@@ -1,4 +1,4 @@
-import { ActivityIndicator, Alert, FlatList, Image, Pressable, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Alert, FlatList, Image, Pressable, SafeAreaView, ScrollView, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useLayoutEffect, useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
@@ -8,14 +8,14 @@ import { RecipeCard, BottomTab } from "../components";
 
 const HomeScreen = ({ navigation }) => {
   const [searchInputText, setSearchInputText] = useState("all");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("all");
   const [recipeDatas, setRecipeDatas] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   // console.log(searchInputText);
 
   const url = "https://recipe-app-api-7eo6.onrender.com/api/v1/all"
 
-  
+
   useLayoutEffect(() => {
     const getAllRecipe = async () => {
       try {
@@ -46,21 +46,32 @@ const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
 
-      <MyText text={"Find Best Recipe"} style={[headingText, styles.title]} />
-      <MyText text={"For Cooking."} style={[headingText, styles.title]} />
-      <View style={styles.searchInputContainer}>
-        <AntDesign name="search1" size={24} color="#bdbdbd" />
-        <TextInput style={styles.searchInput} placeholder='Search Recipe' onChangeText={(value) => setSearchInputText(value)} placeholderTextColor={"#bdbdbd"} />
-      </View>
-      <FlatList data={categories} renderItem={renderCategory} horizontal contentContainerStyle={{ height: 40, marginTop: 10,marginBottom:25 }} showsHorizontalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
-      {
-        (isLoading && (recipeDatas === null)) ?
-          <View style={styles.loader}>
-            <Image source={require("../assets/cutlery.gif")} style={{ width: 200, height: 200,}} resizeMode='cover' />
+      <ScrollView contentContainerStyle={{ padding: 5, }} showsVerticalScrollIndicator={false}>
+        <View style={styles.homeHeaderContainer}>
+          <View>
+            <MyText text={"Hello, Manoj"} style={styles.homeHeaderGreetText} />
+            <MyText text={"What would to you like"} style={styles.homeHeaderNormalText} />
+            <MyText text={"to cook today?"} style={styles.homeHeaderNormalText} />
           </View>
-          : <FlatList data={recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{ gap: 5, paddingBottom: "35%", paddingTop:10 }} showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
-      }
+          <View>
+            <Image source={require("../assets/girl.png")} style={styles.userAvatar} resizeMode='contain' />
+          </View>
+        </View>
+        <View style={styles.searchInputContainer}>
+          <AntDesign name="search1" size={24} color="#bdbdbd" />
+          <TextInput style={styles.searchInput} placeholder='Search Recipe' onChangeText={(value) => setSearchInputText(value)} placeholderTextColor={"#bdbdbd"} />
+        </View>
+        <FlatList data={categories} renderItem={renderCategory} horizontal contentContainerStyle={{marginVertical:20,}} showsHorizontalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
+        
+        {
+          !(isLoading && (recipeDatas === null)) ?
+            <View style={styles.loader}>
+              <Image source={require("../assets/cutlery.gif")} style={{ width: 200, height: 200, }} resizeMode='cover' />
+            </View>
+            : <FlatList data={recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{ gap: 5, paddingBottom: "35%", }} showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
+        }
 
+      </ScrollView>
 
       <BottomTab navigation={navigation} />
     </SafeAreaView>
@@ -74,26 +85,45 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    paddingTop: Constants.statusBarHeight + 15,
-    paddingHorizontal: 15,
-    // padding:10,
+    paddingTop: Constants.statusBarHeight +5,
+    paddingHorizontal: 10,
   },
-  loader:{
-    width: "100%",
-    height: "74%",
+  homeHeaderContainer: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+  },
+  homeHeaderGreetText: {
+    color: "#a6a6a6",
+    marginBottom:5,
+  },
+  homeHeaderNormalText: {
+    fontSize: 20,
+    fontWeight: '600'
+  },
+  userAvatar: {
+    borderRadius: 50,
+    backgroundColor: "#b3d2c5",
+    width: 50,
+    height: 50,
+  },
+  loader: {
     alignItems: "center",
     justifyContent: "center",
   },
+
   title: {
     color: "#0d0b10",
+    fontSize: 28,
   },
   searchInputContainer: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#ffffff",
     borderRadius: 10,
-    padding: 15,
-    marginTop: 5,
+    padding: 10,
+    paddingVertical:12,
+    marginTop: 15,
   },
   searchInput: {
     flex: 1,

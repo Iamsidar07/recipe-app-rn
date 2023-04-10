@@ -59,9 +59,9 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
         <TouchableOpacity style={styles.backIcon} onPress={() => navigation.goBack()} >
-          <Ionicons name="arrow-back" size={28} color="#bdbdbd" />
+          <Ionicons name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
-        <MyText text={"Find Recipe Ideas."} style={[headingText, styles.title]} allowFontScaling={true} numberOfLines={1} />
+        <MyText text={"Recipe Ideas."} style={[headingText, styles.title]} allowFontScaling={true} numberOfLines={1} />
       </View>
       <MyText text={"What's in your kitchen."} style={styles.introTitle} />
       <MyText text={"Enter up to 2 ingredients"} style={styles.introDesc} />
@@ -98,26 +98,33 @@ export default FindRecipeFromIngredientsScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight + 15,
+    paddingTop: Constants.statusBarHeight + 5,
 
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
   },
   headerContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    paddingTop: 5,
   },
   backIcon: {
     position: "absolute",
     left: 0,
+    backgroundColor: "white",
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     color: "#0d0b10",
     fontSize: 20,
   },
   introTitle: {
-    fontSize: 28,
-    fontWeight: "bold",
+    fontSize: 20,
+    // fontWeight: "bold",
     marginTop: 24,
   },
   introDesc: {

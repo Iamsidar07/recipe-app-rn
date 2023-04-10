@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
 
   image: {
     width: "100%",
-    height: 350,
-    borderRadius: 20,
+    height: 280,
+    borderRadius: 30,
     position: "relative",
     backgroundColor:"#614b3d"
   },
@@ -51,12 +51,12 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   recipeTitle: {
-    fontSize: 28,
+    fontSize: 20,
     color: "white",
     fontWeight: "bold",
   },
   ingredientsAndTimeText: {
-    fontSize: 16,
+    fontSize:14,
     color: "#e4e1df",
     marginTop: 10,
   }
