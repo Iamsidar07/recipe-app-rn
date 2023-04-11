@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   recipeTitle: {
     fontSize: 20,
     color: "white",
-    fontFamily:"Raleway-Medium",
+    fontFamily:"Sen-Bold",
   },
   ingredientsAndTimeText: {
     color: "#e4e1df",

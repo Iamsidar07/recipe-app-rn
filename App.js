@@ -30,12 +30,8 @@ export default function App() {
   };
 
   const [loaded] = useFonts({
-    "Raleway-SemiBold": require("./assets/fonts/Raleway-SemiBold.ttf"),
-    "Raleway-Medium": require("./assets/fonts/Raleway-Medium.ttf"),
-    "Raleway-Regular": require("./assets/fonts/Raleway-Regular.ttf"),
-    "Raleway-SemiBold": require("./assets/fonts/Raleway-SemiBold.ttf"),
-    "Raleway-Light": require("./assets/fonts/Raleway-Light.ttf"),
-    
+    "Sen-Bold": require("./assets/fonts/Sen-Bold.ttf"),
+    "Sen-Regular": require("./assets/fonts/Sen-Regular.ttf"),
   });
 
   if (!loaded) return null;

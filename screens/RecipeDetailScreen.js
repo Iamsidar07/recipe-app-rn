@@ -15,7 +15,7 @@ const RecipeDetailScreen = ({ navigation }) => {
     const difficultyLevel = recipeData?.difficulty.toLowerCase();
     if (difficultyLevel === "easy") {
         difficultyLevelBg = "green";
-    } else if (difficultyLevel === "medium") {
+    } else if (difficultyLevel === "Bold") {
         difficultyLevelBg = "orange"
     } else {
         difficultyLevelBg = "red";
@@ -58,7 +58,7 @@ const RecipeDetailScreen = ({ navigation }) => {
                     <MyText text={`${recipeData.serving} Serving `} style={{ fontSize: 16 }} />
 
                 </View>
-                <MyText text={"Description"} style={{ fontSize: 20, marginBottom: 10, fontFamily: "Raleway-Medium", }}/>
+                <MyText text={"Description"} style={{ fontSize: 20, marginBottom: 10, fontFamily: "Sen-Bold", }}/>
                 <MyText text={recipeData.description} style={styles.description} />
 
                 <View style={styles.ingredientsAndServingBtnContainer}>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     title: {
         color: "#0d0b10",
         fontSize: 25,
-        fontFamily: "Raleway-Medium",
+        fontFamily: "Sen-Bold",
     },
     image: {
         width: "100%",
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     ingredientsText: {
         color: "#111742",
         fontSize:20,
-        fontFamily: "Raleway-Medium",
+        fontFamily: "Sen-Bold",
     },
     servingBtnContainer: {
         // backgroundColor: "#24BC66",
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     },
     startCookBtnText: {
         marginRight: 10,
-        fontFamily: "Raleway-Medium",
+        fontFamily: "Sen-Bold",
         fontSize: 20,
         color: "white",
         textAlign: "center",

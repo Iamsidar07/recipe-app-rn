@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   introTitle: {
     fontSize: 25,
-    fontFamily:"Raleway-Medium",
+    fontFamily:"Sen-Bold",
     marginTop: 24,
   },
   introDesc: {
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontFamily: "Raleway-Regular"
+    fontFamily: "Sen-Regular"
   },
   plusContainer: {
     width: 40,
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   },
   startCookBtnText: {
     marginRight: 10,
-    fontFamily: "Raleway-Medium",
+    fontFamily: "Sen-Bold",
     fontSize: 20,
     color: "white",
     textAlign: "center",

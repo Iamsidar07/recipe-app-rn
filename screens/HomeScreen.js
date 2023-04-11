@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   },
   homeHeaderNormalText: {
     fontSize: 23,
-    fontFamily: "Raleway-Medium",
+    fontFamily: "Sen-Bold",
   },
   userAvatar: {
     borderRadius: 50,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     backgroundColor: "#ffffff",
     color: "#bdbdbd",
-    fontFamily: "Raleway-Regular"
+    fontFamily: "Sen-Regular"
   },
   categoryContainer: {
     paddingHorizontal: 15,
