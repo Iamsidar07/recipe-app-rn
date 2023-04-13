@@ -25,10 +25,13 @@ const RecipeCard = ({ recipeData, navigation }) => {
 export default RecipeCard
 
 const styles = StyleSheet.create({
-
-  image: {
+  container:{
     width: "100%",
-    height: 400,
+    height:370,
+  },
+  image: {
+    width:"100%",
+    height:"100%",
     borderRadius: 30,
     position: "relative",
     backgroundColor:"#614b3d",
