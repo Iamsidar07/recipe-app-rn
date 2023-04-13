@@ -2,11 +2,11 @@ import { StyleSheet,  TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Entypo, Ionicons } from '@expo/vector-icons';
 import MyText from '../../MyText';
-
+import { boxShadow } from '../../constants';
 
 const BottomTab = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,boxShadow]}>
       <TouchableOpacity style={styles.iconContainer} onPress={()=>navigation.navigate("HomeScreen")}>
         <Entypo name="home" size={24} color="black" />
         <MyText text={"Home"} style={{ fontSize: 16, color: "#a6a6a6" }} />

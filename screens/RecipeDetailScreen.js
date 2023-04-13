@@ -2,7 +2,7 @@ import { ActivityIndicator, FlatList, Image, ImageBackground, SafeAreaView, Scro
 import React, { useLayoutEffect, useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
-import { headingText, categories } from '../constants'
+import { headingText, categories, boxShadow } from '../constants'
 import { Ionicons, AntDesign, Fontisto, MaterialIcons } from '@expo/vector-icons';
 import { RecipeCard } from "../components";
 import { useRoute } from '@react-navigation/native'
@@ -21,7 +21,7 @@ const RecipeDetailScreen = ({ navigation }) => {
         difficultyLevelBg = "red";
     }
     const renderIngredientItem = ({ item }) => {
-        return <View style={styles.ingredientItemContainer}>
+        return <View style={[styles.ingredientItemContainer,boxShadow]}>
             <View style={styles.nameAndImageContainer}>
                 <View style={styles.ingredientImageContainer}>
                     <MyText text={item.ingredientEmoji} style={styles.ingredientImage} />
@@ -35,14 +35,14 @@ const RecipeDetailScreen = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <Image source={{ uri: recipeData.recipeImageUrl }} style={StyleSheet.absoluteFillObject} resizeMode='cover' />
             <View style={styles.headerContainer}>
-                <TouchableOpacity style={styles.backIcon} onPress={() => navigation.goBack()} >
+                <TouchableOpacity style={[styles.backIcon,boxShadow]} onPress={() => navigation.goBack()} >
                     <Ionicons name="arrow-back" size={24} color="black" />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.backIcon} >
+                <TouchableOpacity style={[styles.backIcon,boxShadow]} >
                     <MaterialIcons name="favorite-border" size={24} color="black" />
                 </TouchableOpacity>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ backgroundColor: "#ffffff", paddingHorizontal: 20, paddingVertical: 50, borderTopLeftRadius: 30, borderTopRightRadius: 30,}}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={[{ backgroundColor: "#ffffff", paddingHorizontal: 15, paddingVertical: 50, borderTopLeftRadius: 30, borderTopRightRadius: 30,},boxShadow]}>
                 <MyText text={recipeData.title} style={styles.title} />
                
                 <View style={styles.info}>
@@ -64,7 +64,7 @@ const RecipeDetailScreen = ({ navigation }) => {
                 <View style={styles.ingredientsAndServingBtnContainer}>
                     <MyText text={`Ingredients (${recipeData.ingredients?.length})`} style={styles.ingredientsText} />
                 </View>
-                <FlatList data={recipeData.ingredients} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || index || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: "65%" }} />
+                <FlatList data={recipeData.ingredients} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || index || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={[{ paddingBottom: "65%",padding:5, },boxShadow]} />
             </ScrollView>
             <TouchableOpacity style={styles.startCookBtnContainer} onPress={() => navigation.navigate("InstructionScreen", { recipeData })}>
                 <MyText text={"Start Cook!"} style={styles.startCookBtnText} />
@@ -81,7 +81,7 @@ export default RecipeDetailScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Constants.statusBarHeight ,
+        paddingTop: Constants.statusBarHeight + 7 ,
     },
     headerContainer: {
         flexDirection: "row",
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
         // borderRadius: 40,
     },
     ingredientItemContainer: {
-        // padding: 20,
+        padding: 7,
         backgroundColor: "#ffffff",
         marginTop: 15,
         borderRadius: 10,

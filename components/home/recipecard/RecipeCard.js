@@ -2,14 +2,14 @@ import { Image, StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import MyText from "../../../MyText";
 import { Fontisto } from '@expo/vector-icons';
-
+import { boxShadow } from '../../../constants';
 const RecipeCard = ({ recipeData, navigation }) => {
   const { title, ingredients, time, recipeImageUrl, category } = recipeData;
 
   const addToFavorite = () => {
     //add to favorite
   }
-  return (<TouchableOpacity style={styles.container} onPress={() => navigation.navigate("RecipeDetailScreen", { recipeData })}>
+  return (<TouchableOpacity style={[styles.container,boxShadow]} onPress={() => navigation.navigate("RecipeDetailScreen", { recipeData })}>
     <Image source={{ uri: recipeImageUrl }} style={styles.image} resizeMode='cover' />
     <TouchableOpacity style={styles.saveIconContainer} onPress={addToFavorite}>
       <Fontisto name="favorite" size={32} color="white" />

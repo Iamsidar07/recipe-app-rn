@@ -2,7 +2,7 @@ import { FlatList, Image, Pressable, SafeAreaView, ScrollView, StyleSheet, Touch
 import React, { useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
-import { headingText } from '../constants'
+import { boxShadow, headingText } from '../constants'
 import { Ionicons } from '@expo/vector-icons';
 
 import { useRoute } from '@react-navigation/native'
@@ -19,7 +19,7 @@ const InstructionScreen = ({ navigation }) => {
     }
 
     const renderIngredientItem = ({ item, index }) => {
-        return <View style={styles.stepItemContainer} >
+        return <View style={[styles.stepItemContainer,boxShadow]} >
             <View style={styles.stepNumberContainer}>
                 <MyText text={index + 1} style={styles.stepNumber} />
             </View>
@@ -27,20 +27,20 @@ const InstructionScreen = ({ navigation }) => {
         </View>
     }
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.headerContainer}>
-                <TouchableOpacity style={styles.backIcon} onPress={() => navigation.goBack()} >
+        <SafeAreaView style={[styles.container,boxShadow]}>
+            <View style={[styles.headerContainer,boxShadow]}>
+                <TouchableOpacity style={[styles.backIcon,boxShadow]} onPress={() => navigation.goBack()} >
                     <Ionicons name="arrow-back" size={24} color="black" />
                 </TouchableOpacity>
                 <MyText text={recipeData.title.length >= 20 ? `${recipeData.title.slice(0, 20)}...` : recipeData.title} style={[headingText, styles.title]} allowFontScaling={true} numberOfLines={1} />
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ backgroundColor: "#ffffff",borderTopLeftRadius: 30, borderTopRightRadius: 30, marginTop:20,}}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={[{ backgroundColor: "#ffffff",borderTopLeftRadius: 30, borderTopRightRadius: 30, marginTop:20,},boxShadow]}>
                 <MyText text={"🍜Instruction:"} style={styles.description} />
                 {
                     isDone && <Image source={{ uri: "https://png.pngtree.com/png-clipart/20210808/original/pngtree-congratulations-png-vactor-png-image_6617562.jpg" }} style={styles.congratulationGif} resizeMode='cover' />
                 }
 
-                <FlatList data={recipeData.direction} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: "65%", backgroundColor: "#ffffff", padding: 5, borderTopLeftRadius: 30, borderTopRightRadius: 30 }} />
+                <FlatList data={recipeData.direction} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: "65%", backgroundColor: "#ffffff", padding: 10, borderTopLeftRadius: 30, borderTopRightRadius: 30 }} />
             </ScrollView>
 
             <Pressable style={styles.startCookBtnContainer} onPress={handleDoneBtnPress}>
@@ -58,7 +58,7 @@ export default InstructionScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Constants.statusBarHeight + 10,
+        paddingTop: Constants.statusBarHeight + 20,
     },
     headerContainer: {
         flexDirection: "row",
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     },
     backIcon: {
         position: "absolute",
-        left: 5,
+        left: 10,
         backgroundColor: "white",
         width: 50,
         height: 50,

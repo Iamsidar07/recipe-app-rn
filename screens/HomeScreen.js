@@ -5,7 +5,7 @@ import MyText from '../MyText'
 import { headingText, categories } from '../constants'
 import { AntDesign } from '@expo/vector-icons';
 import { RecipeCard, BottomTab } from "../components";
-
+import { boxShadow } from '../constants'
 
 const HomeScreen = ({ navigation }) => {
   const [searchInputText, setSearchInputText] = useState("all");
@@ -38,7 +38,7 @@ const HomeScreen = ({ navigation }) => {
 
   const renderCategory = ({ item }) => {
     return (
-      <Pressable style={[styles.categoryContainer, { backgroundColor: category.toLocaleLowerCase() === item.name.toLocaleLowerCase() ? "#0e0e0e" : "#ffffff", },]} onPress={() => setCategory(item.name)}>
+      <Pressable style={[styles.categoryContainer, { backgroundColor: category.toLocaleLowerCase() === item.name.toLocaleLowerCase() ? "#0e0e0e" : "#ffffff", }, boxShadow]} onPress={() => setCategory(item.name)}>
         <MyText text={item.name} style={[styles.categoryText, { color: category.toLocaleLowerCase() === item.name.toLocaleLowerCase() ? "white" : "gray" }]} />
       </Pressable>
     )
@@ -54,20 +54,20 @@ const HomeScreen = ({ navigation }) => {
             <MyText text={"What would to you like"} style={styles.homeHeaderNormalText} />
             <MyText text={"to cook today?"} style={styles.homeHeaderNormalText} />
           </View>
-          <View>
+          <View style={boxShadow}>
             <Image source={require("../assets/girl.png")} style={styles.userAvatar} resizeMode='contain' />
           </View>
         </View>
-        <View style={styles.searchInputContainer}>
+        <View style={[styles.searchInputContainer, boxShadow]}>
           <AntDesign name="search1" size={24} color="#bdbdbd" />
           <TextInput style={styles.searchInput} placeholder='Search Recipe' onChangeText={(value) => setSearchInputText(value)} placeholderTextColor={"#bdbdbd"} />
         </View>
-        <FlatList data={categories} renderItem={renderCategory} horizontal contentContainerStyle={{marginVertical:20,}} showsHorizontalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
-        
+        <FlatList data={categories} renderItem={renderCategory} horizontal contentContainerStyle={{ marginVertical: 20,paddingVertical:2, }} showsHorizontalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
+
         {
           (isLoading && (recipeDatas === null)) ?
             <View style={styles.loader}>
-                <Image source={require("../assets/1.gif")} style={{ width: 70, height: 70 }} resizeMode='contain'/>
+              <Image source={require("../assets/1.gif")} style={{ width: 70, height: 70 }} resizeMode='contain' />
             </View>
             : <FlatList data={recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{ gap: 5, paddingBottom: "35%", }} showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
         }
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    paddingTop: Constants.statusBarHeight +5,
+    paddingTop: Constants.statusBarHeight + 5,
     paddingHorizontal: 10,
   },
   homeHeaderContainer: {
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   homeHeaderGreetText: {
     color: "#a6a6a6",
-    marginBottom:5,
+    marginBottom: 5,
   },
   homeHeaderNormalText: {
     fontSize: 23,
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   loader: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop:10,
+    marginTop: 10,
   },
 
   title: {
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderRadius: 10,
     padding: 10,
-    paddingVertical:12,
+    paddingVertical: 12,
     marginTop: 15,
   },
   searchInput: {

@@ -2,7 +2,7 @@ import { ActivityIndicator, Alert, FlatList, Image,Pressable, SafeAreaView, Styl
 import React, {  useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
-import { headingText} from '../constants'
+import { boxShadow, headingText} from '../constants'
 import { Ionicons, AntDesign, Entypo } from '@expo/vector-icons';
 
 
@@ -14,7 +14,7 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const renderIngredientItem = ({ item, index }) => {
-    return <View style={styles.ingredientItemContainer}>
+    return <View style={[styles.ingredientItemContainer,boxShadow]}>
       <MyText text={item} style={styles.ingredientName} />
       <TouchableOpacity style={[styles.plusContainer, { backgroundColor: "#2d2d2d" }]} onPress={() => removeIngredient(index)}>
         <Entypo name="cross" size={24} color="white" />
@@ -57,15 +57,15 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
   console.log(isLoading);
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.headerContainer}>
-        <TouchableOpacity style={styles.backIcon} onPress={() => navigation.goBack()} >
+      <View style={[styles.headerContainer,boxShadow]}>
+        <TouchableOpacity style={[styles.backIcon,boxShadow]} onPress={() => navigation.goBack()} >
           <Ionicons name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
         <MyText text={"Recipe Ideas."} style={[headingText, styles.title]} allowFontScaling={true} numberOfLines={1} />
       </View>
       <MyText text={"What's in your kitchen."} style={styles.introTitle} />
       <MyText text={"Enter up to 2 ingredients"} style={styles.introDesc} />
-      <View style={styles.inputContainer}>
+      <View style={[styles.inputContainer,boxShadow]}>
         <TextInput style={styles.input} placeholder='Type and add your ingredients...' onChangeText={(value) => setNameOfIngredient(value)} placeholderTextColor={"#bdbdbd"} value={nameOfIngredient} />
         <TouchableOpacity style={styles.plusContainer} onPress={addIngredientToIngredients}>
           <AntDesign name="plus" size={24} color="white" />
@@ -77,7 +77,7 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
           <Image source={require("../assets/boy.png")} style={{ width: "100%", height: 400 }} resizeMode='cover' /> 
         </View>
         : 
-        <FlatList data={ingredients} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: "65%" }} />}
+        <FlatList data={ingredients} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: "65%",paddingHorizontal:1, }} />}
 
       <Pressable style={[styles.startCookBtnContainer, { backgroundColor: isLoading ? "#cbc39c" : "#0e0e0e" }]} onPress={handleDoneBtnPress}>
         {
@@ -98,7 +98,7 @@ export default FindRecipeFromIngredientsScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight + 5,
+    paddingTop: Constants.statusBarHeight + 20,
 
     paddingHorizontal: 15,
   },
