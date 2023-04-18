@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
 import { boxShadow, headingText } from '../constants'
-import { Ionicons, AntDesign, Entypo } from '@expo/vector-icons';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
 import Lottie from "lottie-react-native";
 
 const url = "https://recipe-app-api-7eo6.onrender.com/api/v1/findRecipe"
@@ -17,7 +17,7 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
     return <View style={[styles.ingredientItemContainer, boxShadow]}>
       <MyText text={item} style={styles.ingredientName} />
       <TouchableOpacity style={[styles.plusContainer, { backgroundColor: "#2d2d2d" }]} onPress={() => removeIngredient(index)}>
-        <Entypo name="cross" size={24} color="white" />
+        <AntDesign name="delete" size={24} color="white" />
       </TouchableOpacity>
 
     </View>
