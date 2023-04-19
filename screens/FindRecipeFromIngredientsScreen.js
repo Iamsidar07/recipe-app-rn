@@ -16,8 +16,8 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
   const renderIngredientItem = ({ item, index }) => {
     return <View style={[styles.ingredientItemContainer, boxShadow]}>
       <MyText text={item} style={styles.ingredientName} />
-      <TouchableOpacity >
-        <Image source={require("../assets/bin.png")} style={{ width: 20, height: 20 }} resizeMode='contain' onPress={() => removeIngredient(index)} />
+      <TouchableOpacity onPress={() => removeIngredient(index)} >
+        <Image source={require("../assets/bin.png")} style={{ width: 20, height: 20 }} resizeMode='contain' />
       </TouchableOpacity>
 
     </View>
