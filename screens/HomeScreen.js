@@ -80,11 +80,11 @@ const HomeScreen = ({ navigation }) => {
           searchInputText && <MyText text={`Showing search result for ${searchInputText}`} style={{fontSize:12,fontWeight:"bold",marginVertical:5,}} />
         }
 
-        <FlatList data={categories} renderItem={renderCategory} horizontal contentContainerStyle={{ marginVertical: 20, paddingVertical: 2, }} showsHorizontalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
+        <FlatList data={categories} renderItem={renderCategory} horizontal contentContainerStyle={{ marginVertical: 15, paddingVertical: 2, }} showsHorizontalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
 
         {
           (isLoading && (recipeDatas === null)) ? <View style={styles.loader}>
-            <Lottie source={require("../assets/spoonLoader.json")} autoPlay style={{ width: 100, }} loop />
+            <Lottie source={require("../assets/spoonLoader.json")} autoPlay style={{ width: 70, }} loop />
           </View>
             : <FlatList data={searchInputText ? searchResults : recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{ gap: 5, paddingBottom: "35%", }} showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
         }

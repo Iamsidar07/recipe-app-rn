@@ -7,27 +7,34 @@ export const subHeadingText = {
 }
 export const categories = [
     {
-        name: "All",
-        id: "7^sadkjg9832",
-    },
-    {
-        name: "Sushi",
+        name: "🍥 Sushi",
         id: "7^sadsdjg9832",
     },
     {
-        name: "Pasta",
-        id: "7^sadjg9832",
+        name: "🍝Pasta",
+        id: "7^sad8jg9832",
+    },
+    {
+        name: "🥘 Curry",
+        id: "7^sadjg98932",
+    },
+    {
+        name: "🍚 Rice",
+        id: "7^sadjyg9832",
+    },
+    {
+        name: "🍳 Stir-fry",
+        id: "7^sadj45g9832",
     },
 ]
 
 export const boxShadow = {
-    shadowColor: "black",
+    shadowColor: "#e4dada",
     shadowOffset: {
         width: 0,
-        height: 1,
+        height: 2,
     },
-    shadowOpacity: 0.20,
-    shadowRadius: 1.41,
-
-    elevation: 2,
+    shadowOpacity: 0.17,
+    shadowRadius: 2.54,
+    elevation: 3
 }
