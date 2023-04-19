@@ -1,7 +1,6 @@
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import MyText from "../../../MyText";
-import { Fontisto } from '@expo/vector-icons';
 import { boxShadow } from '../../../constants';
 const RecipeCard = ({ recipeData, navigation }) => {
   const { title, ingredients, time, recipeImageUrl, category } = recipeData;
@@ -12,7 +11,7 @@ const RecipeCard = ({ recipeData, navigation }) => {
   return (<TouchableOpacity style={[styles.container,boxShadow]} onPress={() => navigation.navigate("RecipeDetailScreen", { recipeData })}>
     <Image source={{ uri: recipeImageUrl }} style={styles.image} resizeMode='cover' />
     <TouchableOpacity style={styles.saveIconContainer} onPress={addToFavorite}>
-      <Fontisto name="favorite" size={32} color="white" />
+      <Image source={require("../../../assets/save.png")} style={{width:40,height:40}} resizeMode='contain'/>
     </TouchableOpacity>
     <View style={styles.recipeInfoContainer}>
       <MyText text={title} style={styles.recipeTitle} />
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 20,
-    backgroundColor: "#614b3d",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",

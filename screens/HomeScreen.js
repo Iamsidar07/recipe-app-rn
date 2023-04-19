@@ -41,7 +41,7 @@ const HomeScreen = ({ navigation }) => {
 
   const renderCategory = ({ item }) => {
     return (
-      <Pressable style={[styles.categoryContainer, { backgroundColor: searchInputText.toLocaleLowerCase() === item.name.toLocaleLowerCase() ? "#0e0e0e" : "#ffffff", }, boxShadow]} onPress={() => setSearchInputText(item.name)}>
+      <Pressable style={[styles.categoryContainer, { backgroundColor: searchInputText.toLocaleLowerCase() === item.name.toLocaleLowerCase() ? "#0e0e0e" : "#ffffff", }, boxShadow]} onPress={() => setSearchInputText(item.name.slice(3))}>
         <MyText text={item.name} style={[styles.categoryText, { color: searchInputText.toLocaleLowerCase() === item.name.toLocaleLowerCase() ? "white" : "gray" }]} />
       </Pressable>
     )
@@ -52,7 +52,7 @@ const HomeScreen = ({ navigation }) => {
     clearTimeout(searchTimeout);
     setSearchInputText(value);
     setSearchTimeout(setTimeout(() => {
-      const searchResults = recipeDatas.filter((recipeData) => recipeData.title.toLowerCase().includes(searchInputText.toLowerCase()) || recipeData.description.toLowerCase().includes(searchInputText.toLowerCase()));
+      const searchResults = recipeDatas.filter((recipeData) => recipeData.title.toLowerCase().includes(searchInputText.toLowerCase()) || recipeData.category.toLowerCase().includes(searchInputText.toLowerCase()) || recipeData.description.toLowerCase().includes(searchInputText.toLowerCase()));
       setSearchResults(searchResults);
     }, 500))
   }

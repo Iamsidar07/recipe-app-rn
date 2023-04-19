@@ -16,8 +16,8 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
   const renderIngredientItem = ({ item, index }) => {
     return <View style={[styles.ingredientItemContainer, boxShadow]}>
       <MyText text={item} style={styles.ingredientName} />
-      <TouchableOpacity style={[styles.plusContainer, { backgroundColor: "#2d2d2d" }]} onPress={() => removeIngredient(index)}>
-        <AntDesign name="delete" size={24} color="white" />
+      <TouchableOpacity >
+        <Image source={require("../assets/bin.png")} style={{ width: 30, height: 30 }} resizeMode='contain' onPress={() => removeIngredient(index)} />
       </TouchableOpacity>
 
     </View>

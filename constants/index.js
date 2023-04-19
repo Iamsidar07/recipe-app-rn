@@ -11,7 +11,7 @@ export const categories = [
         id: "7^sadsdjg9832",
     },
     {
-        name: "🍝Pasta",
+        name: "🍝 Pasta",
         id: "7^sad8jg9832",
     },
     {
@@ -36,5 +36,5 @@ export const boxShadow = {
     },
     shadowOpacity: 0.17,
     shadowRadius: 2.54,
-    elevation: 3
+    elevation: 1.1
 }
