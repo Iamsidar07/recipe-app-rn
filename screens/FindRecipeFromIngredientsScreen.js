@@ -17,7 +17,7 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
     return <View style={[styles.ingredientItemContainer, boxShadow]}>
       <MyText text={item} style={styles.ingredientName} />
       <TouchableOpacity >
-        <Image source={require("../assets/bin.png")} style={{ width: 30, height: 30 }} resizeMode='contain' onPress={() => removeIngredient(index)} />
+        <Image source={require("../assets/bin.png")} style={{ width: 20, height: 20 }} resizeMode='contain' onPress={() => removeIngredient(index)} />
       </TouchableOpacity>
 
     </View>
@@ -158,7 +158,8 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   ingredientItemContainer: {
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical:15,
     backgroundColor: "#ffffff",
     marginTop: 10,
     borderRadius: 10,

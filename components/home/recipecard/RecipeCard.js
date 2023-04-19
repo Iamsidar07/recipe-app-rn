@@ -11,7 +11,7 @@ const RecipeCard = ({ recipeData, navigation }) => {
   return (<TouchableOpacity style={[styles.container,boxShadow]} onPress={() => navigation.navigate("RecipeDetailScreen", { recipeData })}>
     <Image source={{ uri: recipeImageUrl }} style={styles.image} resizeMode='cover' />
     <TouchableOpacity style={styles.saveIconContainer} onPress={addToFavorite}>
-      <Image source={require("../../../assets/save.png")} style={{width:40,height:40}} resizeMode='contain'/>
+      <Image source={require("../../../assets/save.png")} style={{width:20,height:20}} resizeMode='contain'/>
     </TouchableOpacity>
     <View style={styles.recipeInfoContainer}>
       <MyText text={title} style={styles.recipeTitle} />
