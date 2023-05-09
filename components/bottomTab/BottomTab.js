@@ -1,23 +1,24 @@
-import { StyleSheet,  TouchableOpacity, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { Entypo, Ionicons } from '@expo/vector-icons';
-import MyText from '../../MyText';
-import { boxShadow } from '../../constants';
+import { AntDesign, FontAwesome} from '@expo/vector-icons';
+import { boxShadow, colors } from '../../constants';
 
 const BottomTab = ({ navigation }) => {
   return (
-    <View style={[styles.container,boxShadow]}>
-      <TouchableOpacity style={styles.iconContainer} onPress={()=>navigation.navigate("HomeScreen")}>
-        <Entypo name="home" size={20} color="black" />
-        <MyText text={"Home"} style={{ fontSize: 12, color: "#a6a6a6" }} />
+    <View style={[styles.container, boxShadow]}>
+      <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate("HomeScreen")}>
+        <AntDesign name="home" size={24} color="black" />
       </TouchableOpacity>
-      {/* <TouchableOpacity style={styles.iconContainer} onPress={()=>navigation.navigate("HomeScreen")}>
-        <Fontisto name="favorite" size={24} color="#dfdfdf" />
-      </TouchableOpacity> */}
       <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate("FindRecipeFromIngredientsScreen")}>
-        <Ionicons name="ios-fast-food" size={20} color="#dfdfdf" />
-        <MyText text={"Don't know"} style={{ fontSize: 12, color: "#a6a6a6" }} />
+        <AntDesign name="pluscircleo" size={32} color={colors.primaryColor} />
       </TouchableOpacity>
+      <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate("HomeScreen")}>
+        <AntDesign name="search1" size={24} color="black" />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate("HomeScreen")}>
+        <FontAwesome name="bookmark-o" size={24} color="black" />
+      </TouchableOpacity>
+
     </View>
   )
 }
@@ -25,22 +26,23 @@ const BottomTab = ({ navigation }) => {
 export default BottomTab
 
 const styles = StyleSheet.create({
-  container:{
-    backgroundColor:"#ffffff",
-    paddingVertical:10,
-    position:"absolute",
-    bottom:0,
-    left:0,
-    right:0,
-    flexDirection:"row",
-    alignItems:"center",
-    borderTopLeftRadius:10,
-    borderTopRightRadius:10,
-    justifyContent:"space-around",
+  container: {
+    backgroundColor: "#ffffff",
+    paddingVertical: 10,
+    paddingHorizontal:20,
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    flexDirection: "row",
+    alignItems: "center",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    justifyContent: "space-between",
   },
-  iconContainer:{
-    alignItems:"center",
-    justifyContent:"center",
+  iconContainer: {
+    alignItems: "center",
+    justifyContent: "center",
   },
 
 })

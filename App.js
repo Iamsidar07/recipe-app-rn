@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 //     </Tab.Navigator>
 //   );
 // }
-import { HomeScreen, WelcomeScreen, FindRecipeFromIngredientsScreen,RecipeDetailScreen,InstructionScreen, CongratulationScreen } from "./screens"
+import { HomeScreen, WelcomeScreen, FindRecipeFromIngredientsScreen,RecipeDetailScreen,InstructionScreen } from "./screens"
 
 const Stack = createNativeStackNavigator();
 
@@ -43,7 +43,6 @@ export default function App() {
           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ title: "WelcomeScreen" }} />
           <Stack.Screen name="RecipeDetailScreen" component={RecipeDetailScreen} options={{ title: "RecipeDetailScreen" }} />
           <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: "HomeScreen" }} />
-          <Stack.Screen name="CongratulationScreen" component={CongratulationScreen} options={{ title: "CongratulationScreen" }} />
           <Stack.Screen name="InstructionScreen" component={InstructionScreen} options={{ title: "InstructionScreen" }} />
           <Stack.Screen name="FindRecipeFromIngredientsScreen" component={FindRecipeFromIngredientsScreen} options={{ title: "FindRecipeFromIngredientsScreen" }} />
         </Stack.Navigator>

@@ -1,7 +1,7 @@
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import MyText from "../../../MyText";
-import { boxShadow } from '../../../constants';
+import { boxShadow, colors } from '../../../constants';
 const RecipeCard = ({ recipeData, navigation }) => {
   const { title, ingredients, time, recipeImageUrl, category } = recipeData;
 
@@ -10,12 +10,12 @@ const RecipeCard = ({ recipeData, navigation }) => {
   }
   return (<TouchableOpacity style={[styles.container,boxShadow]} onPress={() => navigation.navigate("RecipeDetailScreen", { recipeData })}>
     <Image source={{ uri: recipeImageUrl }} style={styles.image} resizeMode='cover' />
-    <TouchableOpacity style={styles.saveIconContainer} onPress={addToFavorite}>
+    <TouchableOpacity style={[styles.saveIconContainer,boxShadow]} onPress={addToFavorite}>
       <Image source={require("../../../assets/save.png")} style={{width:20,height:20}} resizeMode='contain'/>
     </TouchableOpacity>
     <View style={styles.recipeInfoContainer}>
       <MyText text={title} style={styles.recipeTitle} />
-      <MyText text={`${category} | ${ingredients.length} Ingredients | ${time}`} style={styles.ingredientsAndTimeText} />
+      <MyText text={`${category} | ${ingredients[0].ingredientEmoji} ${ingredients.length} Ingredients | ⏳ ${time}`} style={styles.ingredientsAndTimeText} />
     </View>
   </TouchableOpacity>
   )
@@ -26,21 +26,25 @@ export default RecipeCard
 const styles = StyleSheet.create({
   container:{
     width: "100%",
-    height:370,
+    height:330,
+    backgroundColor:"#ffffff",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomEndRadius:5,
+    borderBottomStartRadius:5,
   },
   image: {
     width:"100%",
-    height:"100%",
-    borderRadius: 30,
+    height:"70%",
     position: "relative",
-    backgroundColor:"#614b3d",
-
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   saveIconContainer: {
     width: 60,
     height: 60,
     borderRadius: 20,
-    backgroundColor: "white",
+    backgroundColor: "#ffffff",
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",
@@ -48,19 +52,16 @@ const styles = StyleSheet.create({
     right: 10
   },
   recipeInfoContainer: {
-    padding: 15,
-    position: "absolute",
-    bottom: 15,
+    paddingTop: 15,
+    paddingHorizontal:5,
     width: "100%",
-    left:10,
+
   },
   recipeTitle: {
     fontSize: 20,
-    color: "white",
-    fontFamily:"Sen-Bold",
   },
   ingredientsAndTimeText: {
-    color: "#e4e1df",
     marginTop: 10,
+    opacity:0.5,
   }
 })

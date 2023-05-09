@@ -1,16 +1,16 @@
-import { ActivityIndicator, FlatList, Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useLayoutEffect, useState } from 'react'
+import { FlatList, Image, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native'
+import React from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
-import { headingText, categories, boxShadow } from '../constants'
-import { Ionicons, AntDesign, Fontisto, MaterialIcons } from '@expo/vector-icons';
-import { RecipeCard } from "../components";
+import { boxShadow, colors } from '../constants'
+import { Ionicons, AntDesign, MaterialIcons } from '@expo/vector-icons';
+import { Seperator } from "../components";
 import { useRoute } from '@react-navigation/native'
 
 const RecipeDetailScreen = ({ navigation }) => {
     const route = useRoute();
     const { recipeData } = route.params;
-    console.log(recipeData)
+    console.log({recipeData})
     let difficultyLevelBg;
     const difficultyLevel = recipeData?.difficulty.toLowerCase();
     if (difficultyLevel === "easy") {
@@ -21,7 +21,7 @@ const RecipeDetailScreen = ({ navigation }) => {
         difficultyLevelBg = "red";
     }
     const renderIngredientItem = ({ item }) => {
-        return <View style={[styles.ingredientItemContainer,boxShadow]}>
+        return <View style={[styles.ingredientItemContainer, boxShadow]}>
             <View style={styles.nameAndImageContainer}>
                 <View style={styles.ingredientImageContainer}>
                     <MyText text={item.ingredientEmoji} style={styles.ingredientImage} />
@@ -33,38 +33,46 @@ const RecipeDetailScreen = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={styles.container}>
-            <Image source={{ uri: recipeData.recipeImageUrl }} style={StyleSheet.absoluteFillObject} resizeMode='cover' />
+
             <View style={styles.headerContainer}>
-                <TouchableOpacity style={[styles.backIcon,boxShadow]} onPress={() => navigation.goBack()} >
-                    <Ionicons name="arrow-back" size={24} color="black" />
+                <TouchableOpacity style={[styles.backIcon, boxShadow]} onPress={() => navigation.goBack()} >
+                    <AntDesign name="left" size={16} color={colors.secondaryColor} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.backIcon,boxShadow]} >
-                    <MaterialIcons name="favorite-border" size={24} color="black" />
+                <TouchableOpacity style={[styles.favIcon, boxShadow]} >
+                    <MaterialIcons name="favorite-border" size={20} color={colors.secondaryColor} />
                 </TouchableOpacity>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={[{ backgroundColor: "#ffffff", paddingHorizontal: 15, paddingVertical: 50, borderTopLeftRadius: 30, borderTopRightRadius: 30,},boxShadow]}>
-                <MyText text={recipeData.title} style={styles.title} />
-               
-                <View style={styles.info}>
-                    <MyText text={recipeData.category} style={{ fontSize: 16 }} />
-                    <View style={styles.infoContainer}>
-                        <AntDesign name="barschart" size={20} color="#a6a6a6" />
-                        <MyText text={recipeData.difficulty} style={{ fontSize: 16 }} />
-                    </View>
-                    <View style={styles.infoContainer}>
-                        <MaterialIcons name="access-time" size={20} color="#a6a6a6" />
-                        <MyText text={recipeData.time} style={{ fontSize: 16 }} />
-                    </View>
-                    <MyText text={`${recipeData.serving} Serving `} style={{ fontSize: 16 }} />
+            <Seperator />
+            
+            <ScrollView showsVerticalScrollIndicator={false} >
+                <Image source={{ uri: recipeData.recipeImageUrl }} style={styles.image} resizeMode='cover' />
 
-                </View>
-                <MyText text={"Description"} style={{ fontSize: 20, marginBottom: 10, fontFamily: "Sen-Bold", }}/>
-                <MyText text={recipeData.description} style={styles.description} />
+                <ScrollView contentContainerStyle={[{ paddingHorizontal: 10, marginTop: 7, paddingTop: 12 }, boxShadow]}>
+                    <MyText text={recipeData.title} style={styles.title} />
 
-                <View style={styles.ingredientsAndServingBtnContainer}>
-                    <MyText text={`Ingredients (${recipeData.ingredients?.length})`} style={styles.ingredientsText} />
-                </View>
-                <FlatList data={recipeData.ingredients} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || index || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={[{ paddingBottom: "65%",padding:5, },boxShadow]} />
+                    <View style={styles.info}>
+                        <View style={styles.infoContainer}>
+                            <MyText text={"⚡"} style={{ fontSize: 25, marginBottom: 3, }} />
+                            <MyText text={`${recipeData.difficulty[0].toUpperCase()}${recipeData.difficulty.slice(1)}`} style={{ color: "#52c779" }} />
+                        </View>
+                        <View style={[styles.infoContainer, { backgroundColor: "#fff9e9" }]}>
+                            <MyText text={"⏳"} style={{ fontSize: 25, marginBottom: 3, }} />
+                            <MyText text={recipeData.time.slice(0, 6)} style={{ color: "#ecb82f" }} />
+                        </View>
+                        <View style={[styles.infoContainer, { backgroundColor: "#f1effc" }]}>
+                            <MyText text={"🤼"} style={{ fontSize: 25, marginBottom: 3, }} />
+                            <MyText text={`${recipeData.serving}`} style={{ color: "#7664de" }} />
+                        </View>
+
+                    </View>
+                    <MyText text={"Description"} style={{ fontSize: 20, marginBottom: 10, fontFamily: "Sen-Bold", }} />
+                    <MyText text={recipeData.description} style={styles.description} />
+
+                    <View style={styles.ingredientsAndServingBtnContainer}>
+                        <MyText text={`Ingredients (${recipeData.ingredients?.length})`} style={styles.ingredientsText} />
+                    </View>
+                    <FlatList data={recipeData.ingredients} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || index || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={[{ paddingBottom: "65%", paddingVertical: 5, }, boxShadow]} />
+                </ScrollView>
             </ScrollView>
             <TouchableOpacity style={styles.startCookBtnContainer} onPress={() => navigation.navigate("InstructionScreen", { recipeData })}>
                 <MyText text={"Start Cook!"} style={styles.startCookBtnText} />
@@ -81,62 +89,87 @@ export default RecipeDetailScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Constants.statusBarHeight + 7 ,
+        backgroundColor: colors.backgroundColor,
+        paddingTop: Constants.statusBarHeight + 10,
     },
     headerContainer: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        paddingTop:5,
-        paddingHorizontal: 15,
-        marginBottom: "40%"
+        paddingHorizontal: 7,
+        marginBottom: 7,
     },
     backIcon: {
-        backgroundColor: "white",
-        width: 50,
-        height: 50,
+        backgroundColor: "#ffffff",
+        width: 40,
+        height: 40,
         borderRadius: 50,
         alignItems: "center",
         justifyContent: "center",
+    },
+    favIcon: {
+        backgroundColor: "#ffffff",
+        width: 40,
+        height: 40,
+        borderRadius: 50,
+        alignItems: "center",
+        justifyContent: "center",
+
+    },
+    image: {
+        width: "95%",
+        height: 200,
+        opacity: 0.8,
+        marginHorizontal: 7,
+        borderRadius: 10,
+        marginTop: 10,
     },
     title: {
         color: "#0d0b10",
         fontSize: 25,
         fontFamily: "Sen-Bold",
-    },
-    image: {
-        width: "100%",
-        height: 200,
-        borderRadius: 20,
-        marginTop: 20,
-        backgroundColor: "#614b3d"
+        marginBottom: 5,
     },
     description: {
         marginTop: 4,
-        color:"#a6a6a6",
+        color: "#a6a6a6",
     },
     infoContainer: {
-        flexDirection: "row",
         alignItems: "center",
-        gap: 2,
+        backgroundColor: "#eefbf2",
+        width: "30%",
+        padding: 10,
+        paddingVertical: 20,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: "#e9efe6",
+        shadowColor: "#000000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.16,
+        shadowRadius: 1.51,
+        elevation: 1,
     },
     info: {
         flexDirection: "row",
         alignItems: "center",
+        justifyContent: "space-between",
         marginTop: 7,
-        gap: 5,
-        marginBottom:30,
+        marginBottom: 30,
+
     },
     ingredientsAndServingBtnContainer: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
         paddingBottom: 10,
-        marginVertical:10,
+        marginVertical: 10,
     },
     ingredientsText: {
         color: "#111742",
-        fontSize:20,
+        fontSize: 20,
         fontFamily: "Sen-Bold",
     },
     servingBtnContainer: {
@@ -165,19 +198,19 @@ const styles = StyleSheet.create({
     ingredientQuantity: {
 
     },
-    ingredientImageContainer:{
+    ingredientImageContainer: {
         backgroundColor: "#dededf",
         width: 60,
         height: 60,
-        borderRadius:10,
-        alignItems:"center",
-        justifyContent:"center",
+        borderRadius: 10,
+        alignItems: "center",
+        justifyContent: "center",
     },
     ingredientImage: {
         fontSize: 20,
     },
     startCookBtnContainer: {
-        backgroundColor: "#0e0e0e",
+        backgroundColor: colors.primaryColor,
         padding: 20,
         borderRadius: 40,
         flexDirection: "row",

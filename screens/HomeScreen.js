@@ -2,11 +2,12 @@ import { ActivityIndicator, Alert, FlatList, Image, Pressable, SafeAreaView, Scr
 import React, { useLayoutEffect, useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
-import { headingText, categories } from '../constants'
+import { headingText, categories, colors } from '../constants'
 import { AntDesign } from '@expo/vector-icons';
-import { RecipeCard, BottomTab } from "../components";
+import { RecipeCard, BottomTab, Seperator } from "../components";
 import { boxShadow } from '../constants'
 import Lottie from "lottie-react-native";
+
 
 const HomeScreen = ({ navigation }) => {
   const [searchInputText, setSearchInputText] = useState("");
@@ -15,6 +16,7 @@ const HomeScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchResults, setSearchResults] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
+  const [isClicked, setIsClicked] = useState(false);
   // console.log(searchInputText);
 
   const url = "https://recipe-app-api-7eo6.onrender.com/api/v1/all"
@@ -61,37 +63,39 @@ const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
 
-      <ScrollView contentContainerStyle={{ padding: 5, }} showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.homeHeaderContainer}>
-          <View>
-            <MyText text={"Hello 👋, "} style={styles.homeHeaderGreetText} />
-            <MyText text={"What would to you like"} style={styles.homeHeaderNormalText} />
-            <MyText text={"to cook today?"} style={styles.homeHeaderNormalText} />
-          </View>
+          <MyText text={"Hello 👋, "} style={styles.homeHeaderGreetText} />
           <View style={boxShadow}>
             <Image source={require("../assets/girl.png")} style={styles.userAvatar} resizeMode='contain' />
           </View>
+        </View>
+        <Seperator />
+        <View style={styles.description}>
+          <MyText text={"What would to you like"} style={styles.homeHeaderNormalText} />
+          <MyText text={"to cook today?"} style={styles.homeHeaderNormalText} />
         </View>
         <View style={[styles.searchInputContainer, boxShadow]}>
           <AntDesign name="search1" size={24} color="#bdbdbd" />
           <TextInput style={styles.searchInput} placeholder='Search Recipe' onChangeText={handleSearchChange} value={searchInputText} placeholderTextColor={"#bdbdbd"} />
         </View>
         {
-          searchInputText && <MyText text={`Showing search result for ${searchInputText}`} style={{fontSize:12,fontWeight:"bold",marginVertical:5,}} />
+          searchInputText && <MyText text={`Showing search result for ${searchInputText}`} style={{ fontSize: 15, marginVertical: 7, marginLeft: 10, }} />
         }
 
-        <FlatList data={categories} renderItem={renderCategory} horizontal contentContainerStyle={{ marginVertical: 15, paddingVertical: 2, }} showsHorizontalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
+        <FlatList data={categories} renderItem={renderCategory} horizontal contentContainerStyle={{ marginTop: 5, marginBottom: 10, paddingVertical: 2, }} showsHorizontalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
 
         {
           (isLoading && (recipeDatas === null)) ? <View style={styles.loader}>
             <Lottie source={require("../assets/spoonLoader.json")} autoPlay style={{ width: 70, }} loop />
           </View>
-            : <FlatList data={searchInputText ? searchResults : recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{ gap: 5, paddingBottom: "35%", }} showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
+            : <View>
+              <MyText text={"Recommended"} style={{ marginBottom: 9, marginLeft: 10, fontSize: 18, fontWeight: "600" }} />
+              <FlatList data={searchInputText ? searchResults : recipeDatas} renderItem={renderRecipeCard} contentContainerStyle={{ gap: 10, paddingBottom: "35%", paddingHorizontal: 7, }} showsVerticalScrollIndicator={false} keyExtractor={({ item, index }) => item?._id || Math.random()} />
+            </View>
         }
-
-
       </ScrollView>
-
+      <Seperator />
       <BottomTab navigation={navigation} />
     </SafeAreaView>
 
@@ -104,27 +108,35 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    paddingTop: Constants.statusBarHeight + 5,
-    paddingHorizontal: 10,
+    paddingTop: Constants.statusBarHeight + 10,
+    backgroundColor: colors.backgroundColor
   },
   homeHeaderContainer: {
     flexDirection: "row",
-    alignItems: "flex-start",
+    alignItems: "center",
     justifyContent: "space-between",
+    marginBottom: 10,
+    paddingHorizontal: 10,
   },
   homeHeaderGreetText: {
     color: "#a6a6a6",
     marginBottom: 5,
+    fontSize: 20
   },
   homeHeaderNormalText: {
     fontSize: 23,
     fontFamily: "Sen-Bold",
+    maxWidth: "80%",
   },
   userAvatar: {
     borderRadius: 50,
-    backgroundColor: "#b3d2c5",
+    backgroundColor: colors.primaryColor,
     width: 50,
     height: 50,
+  },
+  description: {
+    marginTop: 10,
+    paddingHorizontal: 10,
   },
   loader: {
     alignItems: "center",
@@ -143,26 +155,22 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     paddingVertical: 12,
+    marginHorizontal: 7,
     marginTop: 15,
   },
   searchInput: {
     flex: 1,
     marginLeft: 10,
     backgroundColor: "#ffffff",
-    color: "#bdbdbd",
+    height: "100%",
     fontFamily: "Sen-Regular"
   },
   categoryContainer: {
     paddingHorizontal: 15,
-    paddingVertical: 10,
+    paddingVertical: 15,
     borderRadius: 10,
     marginRight: 7,
+    marginHorizontal: 7,
   },
-  categoryText: {
-    color: "#6d6d6d",
-
-  },
-
-
 
 })

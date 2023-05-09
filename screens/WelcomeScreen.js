@@ -1,22 +1,21 @@
-import { Image, ImageBackground, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Image, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import Constants from "expo-constants"
 import MyText from '../MyText'
 import { headingText } from '../constants'
 import { FontAwesome } from '@expo/vector-icons';
+import { colors } from '../constants';
 const WelcomeScreen = ({ navigation }) => {
   return (
 
     <SafeAreaView style={styles.container}>
-      <ImageBackground source={require("../assets/welcomeBg.jpg")} style={StyleSheet.absoluteFill} resizeMode='cover' blurRadius={10} />
-      <Image source={require("../assets/girl.png")} style={{ width: "100%", height: 400 }} resizeMode='cover' /> 
+
+      <Image source={require("../assets/app-illustration.png")} style={{ width: "100%", height: 300, flex: 1 }} resizeMode='contain' />
       <View style={styles.introContainer}>
         <MyText text={"Cooking  Experience"} style={[headingText, styles.introTitle]} />
         <MyText text={"Like a Chef."} style={[headingText, styles.introTitle]} />
-        <MyText text={"Let's make a delicious dish with the best recipe for the family."} style={styles.introDescription} />
-        <TouchableOpacity style={styles.getStartedBtnContainer} onPress={()=>navigation.navigate("HomeScreen")}>
+        <TouchableOpacity style={styles.getStartedBtnContainer} onPress={() => navigation.navigate("HomeScreen")}>
           <View style={styles.getStartedBtnIconContainer}>
-            <FontAwesome name="arrow-right" size={24} color="#36BD69" />
+            <FontAwesome name="arrow-right" size={24} color={colors.secondaryColor} />
           </View>
           <MyText text={"Get Started"} style={styles.getStartedBtnText} />
         </TouchableOpacity>
@@ -32,43 +31,38 @@ export default WelcomeScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight + 10,
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "space-around",
+    backgroundColor: colors.backgroundColor,
   },
+
   introContainer: {
-  //  marginBottom:"25%",
-  marginBottom:20,
+    marginBottom: 20,
   },
   introTitle: {
     textAlign: "center",
     fontFamily: "Sen-Bold",
-    color:"white",
-    fontSize:28,
+    color:colors.primaryColor,
+    fontSize: 48,
   },
-  introDescription: {
-    textAlign: "center",
-    marginTop: 10,
-    maxWidth: "90%",
-    color: "#dbdbdb"
-  },
+
   getStartedBtnContainer: {
     flexDirection: "row",
-    backgroundColor: "#24BC66",
+    backgroundColor: colors.primaryColor,
     paddingHorizontal: 10,
     paddingVertical: 10,
     borderRadius: 200,
     alignItems: "center",
     justifyContent: "space-between",
     marginTop: 50,
-    alignSelf:"center",
+    alignSelf: "center",
   },
   getStartedBtnIconContainer: {
     width: 60,
     height: 60,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
+    backgroundColor: colors.backgroundColor,
     borderRadius: 50,
   },
   getStartedBtnText: {

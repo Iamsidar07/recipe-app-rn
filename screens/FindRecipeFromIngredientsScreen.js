@@ -1,10 +1,11 @@
-import { ActivityIndicator, Alert, FlatList, Image, Pressable, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, FlatList, Image, Pressable, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
-import { boxShadow, headingText } from '../constants'
-import { Ionicons, AntDesign } from '@expo/vector-icons';
+import { boxShadow, colors, headingText } from '../constants'
+import { Ionicons, AntDesign,  } from '@expo/vector-icons';
 import Lottie from "lottie-react-native";
+import { Seperator } from '../components'
 
 const url = "https://recipe-app-api-7eo6.onrender.com/api/v1/findRecipe"
 
@@ -17,7 +18,7 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
     return <View style={[styles.ingredientItemContainer, boxShadow]}>
       <MyText text={item} style={styles.ingredientName} />
       <TouchableOpacity onPress={() => removeIngredient(index)} >
-        <Image source={require("../assets/bin.png")} style={{ width: 20, height: 20 }} resizeMode='contain' />
+        <AntDesign name="minuscircleo" size={24} color="black" />
       </TouchableOpacity>
 
     </View>
@@ -43,10 +44,9 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
         body: JSON.stringify({ ingredients })
       });
       const data = await res.json();
-      console.log(data)
+      console.log({data})
       setIngredients([]);
       navigation.navigate("RecipeDetailScreen", { recipeData: data.result });
-
     } catch (error) {
       // Alert.alert(error);
       console.log(error);
@@ -54,46 +54,42 @@ const FindRecipeFromIngredientsScreen = ({ navigation }) => {
       setIsLoading(false);
     }
   }
-  console.log(isLoading);
+  console.log(isLoading,ingredients);
   return (
     <SafeAreaView style={styles.container}>
       <View style={[styles.headerContainer, boxShadow]}>
         <TouchableOpacity style={[styles.backIcon, boxShadow]} onPress={() => navigation.goBack()} >
-          <Ionicons name="arrow-back" size={24} color="black" />
+          <AntDesign name="left" size={16} color={colors.secondaryColor} />
         </TouchableOpacity>
         <MyText text={"Recipe Ideas."} style={[headingText, styles.title]} allowFontScaling={true} numberOfLines={1} />
       </View>
-      <MyText text={"What's in your kitchen."} style={styles.introTitle} />
-      <MyText text={"Enter up to 2 ingredients"} style={styles.introDesc} />
-      <View style={[styles.inputContainer, boxShadow]}>
-        <TextInput style={styles.input} placeholder='Type and add your ingredients...' onChangeText={(value) => setNameOfIngredient(value)} placeholderTextColor={"#bdbdbd"} value={nameOfIngredient} />
-        <TouchableOpacity style={styles.plusContainer} onPress={addIngredientToIngredients}>
-          <AntDesign name="plus" size={24} color="white" />
-        </TouchableOpacity>
-      </View>
-
-      {
-        ingredients.length === 0 ? <View>
-          <Image source={require("../assets/boy.png")} style={{ width: "100%", height: 400 }} resizeMode='cover' />
+      <Seperator/>
+      <View style={styles.contentContainer}>
+        <MyText text={"What's in your kitchen."} style={styles.introTitle} />
+        <MyText text={"Enter atleast 2 ingredients"} style={styles.introDesc} />
+        <View style={[styles.inputContainer, boxShadow]}>
+          <TextInput style={styles.input} placeholder='Type and add your ingredients...' onChangeText={(value) => setNameOfIngredient(value)} placeholderTextColor={"#bdbdbd"} value={nameOfIngredient} />
+          <TouchableOpacity style={styles.plusContainer} onPress={addIngredientToIngredients}>
+            <AntDesign name="plus" size={24} color="white" />
+          </TouchableOpacity>
         </View>
-          :
-          <FlatList data={ingredients} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: "65%", paddingHorizontal: 1, }} />}
 
-      {
-        isLoading && <View style={[StyleSheet.absoluteFillObject, { backgroundColor:"#0000006b",alignItems:"center",justifyContent:"center" }]}>
-          <Lottie source={require("../assets/cooking.json")} autoPlay style={{ width:"100%",}} loop/>
-        </View>
-      }
-
-      <Pressable style={[styles.startCookBtnContainer, { backgroundColor: isLoading ? "#cbc39c" : "#0e0e0e" }]} onPress={handleDoneBtnPress}>
         {
-          isLoading ? <ActivityIndicator color="white" size={'large'} /> : (<><MyText text={"Find recipe"} style={styles.startCookBtnText} />
-            <Ionicons name="checkmark-done" size={24} color="#e3e3e3" style={styles.startCookBtnText} /></>)
-        }
+          ingredients.length === 0 ? <View>
+            <Image source={require("../assets/boy.png")} style={{ width: "100%", height: 400 }} resizeMode='cover' />
+          </View>
+            :
+            <FlatList data={ingredients} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: "65%", paddingHorizontal: 1, }} />}
 
-      </Pressable>
 
+        <Pressable style={[styles.startCookBtnContainer, { backgroundColor: isLoading ? colors.accentColor : colors.primaryColor }]} onPress={handleDoneBtnPress}>
+          {
+            isLoading ? <ActivityIndicator color={colors.primaryColor} size={'large'} /> : (<><MyText text={"Find recipe"} style={styles.startCookBtnText} />
+              <Ionicons name="checkmark-done" size={24} color="#e3e3e3" style={styles.startCookBtnText} /></>)
+          }
 
+        </Pressable>
+      </View>
     </SafeAreaView>
 
   )
@@ -105,21 +101,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Constants.statusBarHeight + 20,
-
+  },
+  contentContainer:{
     paddingHorizontal: 15,
+    flex: 1,
   },
   headerContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 5,
+    marginBottom:15,
   },
   backIcon: {
     position: "absolute",
-    left: 0,
+    left: 5,
     backgroundColor: "white",
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     borderRadius: 50,
     alignItems: "center",
     justifyContent: "center",
@@ -132,10 +130,12 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontFamily: "Sen-Bold",
     marginTop: 24,
+    color:colors.primaryColor,
   },
   introDesc: {
     color: "#bdbdbd",
     marginTop: 5,
+    color:colors.secondaryColor
   },
   inputContainer: {
     flexDirection: "row",
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   plusContainer: {
     width: 40,
     height: 40,
-    backgroundColor: "#36BD69",
+    backgroundColor: colors.secondaryColor,
     borderRadius: 50,
     alignItems: "center",
     justifyContent: "center"

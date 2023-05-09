@@ -29,12 +29,21 @@ export const categories = [
 ]
 
 export const boxShadow = {
-    shadowColor: "#e4dada",
+    shadowColor: "#000000",
     shadowOffset: {
         width: 0,
-        height: 2,
+        height: 1,
     },
-    shadowOpacity: 0.17,
-    shadowRadius: 2.54,
-    elevation: 1.1
+    shadowOpacity: 0.16,
+    shadowRadius: 1.51,
+    elevation: 1,
+}
+
+export const colors = {
+    primaryColor: "#F5487F", //the primary color for important elements such as headings and buttons.
+    secondaryColor: "#76C893", // the secondary color for supporting elements such as subheadings and icons.
+    accentColor: "#F7DC6F", //the accent color for interactive elements such as links and hover effects.
+    backgroundColor: "#f5f5f5",
+    recipeCardBackgroundColor: "#F9B384",
+    buttonColor: "#ffd73c"
 }

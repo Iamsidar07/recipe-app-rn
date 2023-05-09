@@ -2,10 +2,10 @@ import { FlatList, Image, Pressable, SafeAreaView, ScrollView, StyleSheet, Touch
 import React, { useState } from 'react'
 import Constants from "expo-constants"
 import MyText from '../MyText'
-import { boxShadow, headingText } from '../constants'
-import { Ionicons } from '@expo/vector-icons';
-
+import { boxShadow, colors, headingText } from '../constants'
+import { Ionicons, AntDesign } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native'
+import { Seperator } from '../components'
 
 const InstructionScreen = ({ navigation }) => {
     const [isDone, setIsDone] = useState(false);
@@ -19,7 +19,7 @@ const InstructionScreen = ({ navigation }) => {
     }
 
     const renderIngredientItem = ({ item, index }) => {
-        return <View style={[styles.stepItemContainer,boxShadow]} >
+        return <View style={[styles.stepItemContainer, boxShadow]} >
             <View style={styles.stepNumberContainer}>
                 <MyText text={index + 1} style={styles.stepNumber} />
             </View>
@@ -27,22 +27,18 @@ const InstructionScreen = ({ navigation }) => {
         </View>
     }
     return (
-        <SafeAreaView style={[styles.container,boxShadow]}>
-            <View style={[styles.headerContainer,boxShadow]}>
-                <TouchableOpacity style={[styles.backIcon,boxShadow]} onPress={() => navigation.goBack()} >
-                    <Ionicons name="arrow-back" size={24} color="black" />
+        <SafeAreaView style={[styles.container, boxShadow]}>
+            <View style={[styles.headerContainer, boxShadow]}>
+                <TouchableOpacity style={[styles.backIcon, boxShadow]} onPress={() => navigation.goBack()} >
+                    <AntDesign name="left" size={16} color={colors.secondaryColor} />
                 </TouchableOpacity>
                 <MyText text={recipeData.title.length >= 20 ? `${recipeData.title.slice(0, 20)}...` : recipeData.title} style={[headingText, styles.title]} allowFontScaling={true} numberOfLines={1} />
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={[{ backgroundColor: "#ffffff",borderTopLeftRadius: 30, borderTopRightRadius: 30, marginTop:20,},boxShadow]}>
-                <MyText text={"🍜Instruction:"} style={styles.description} />
-                {
-                    isDone && <Image source={{ uri: "https://png.pngtree.com/png-clipart/20210808/original/pngtree-congratulations-png-vactor-png-image_6617562.jpg" }} style={styles.congratulationGif} resizeMode='cover' />
-                }
+            <Seperator />
 
-                <FlatList data={recipeData.direction} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: "65%", backgroundColor: "#ffffff", padding: 10, borderTopLeftRadius: 30, borderTopRightRadius: 30 }} />
-            </ScrollView>
+            <MyText text={"🍜Instruction:"} style={styles.description} />
 
+            <FlatList data={recipeData["direction"||"directions"]} renderItem={renderIngredientItem} keyExtractor={({ item, index }) => item || Math.random()} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: "65%", padding: 10, borderTopLeftRadius: 30, borderTopRightRadius: 30 }} />
             <Pressable style={styles.startCookBtnContainer} onPress={handleDoneBtnPress}>
                 <MyText text={"Done !"} style={styles.startCookBtnText} />
                 <Ionicons name="checkmark-done" size={24} color="#e3e3e3" style={styles.startCookBtnText} />
@@ -64,16 +60,15 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: 5,
         paddingHorizontal: 15,
-        marginBottom:30,
+        marginBottom: 15,
     },
     backIcon: {
         position: "absolute",
-        left: 10,
+        left: 5,
         backgroundColor: "white",
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
         borderRadius: 50,
         alignItems: "center",
         justifyContent: "center",
@@ -85,20 +80,22 @@ const styles = StyleSheet.create({
     description: {
         fontFamily: "Sen-Regular",
         fontSize: 20,
-        marginTop:30,
+        marginTop: 10,
         padding:10,
+        color: colors.primaryColor,
     },
     stepItemContainer: {
-        padding: 15,
+        padding: 10,
         backgroundColor: "#ffffff",
         marginTop: 10,
         borderRadius: 10,
+        position:"relative",
     },
     stepNumberContainer: {
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
         borderRadius: 40,
-        backgroundColor: "#24BC66",
+        backgroundColor:colors.accentColor,
         alignItems: "center",
         justifyContent: "center",
         position: "absolute",
@@ -113,7 +110,7 @@ const styles = StyleSheet.create({
         marginTop: 50,
     },
     startCookBtnContainer: {
-        backgroundColor: "#0e0e0e",
+        backgroundColor: colors.primaryColor,
         padding: 20,
         borderRadius: 40,
         flexDirection: "row",
